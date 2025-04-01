@@ -898,7 +898,7 @@ Si deseas desplegar tu aplicación en la web:
 
 ## Captura:
 
-!()[iapi_key.png]
+!()[api_key.jpeg]
      
    - Añade una variable llamada GOOGLE_API_KEY con tu clave API como valor
    - Asegúrate de que esté disponible para Production, Preview y Development
