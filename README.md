@@ -880,6 +880,13 @@ Ahora estás listo para probar la aplicación en tu computadora.
    - Haz clic en "Enviar".
    - Verás el indicador "Cargando..." y, si todo es correcto, la respuesta de Gemini aparecerá en la caja de resultados.
 
+## Captura:
+
+![Mi imagen](Screenshot_294.png)
+
+![Mi imagen](Screenshot_298.png)
+
+
 5. **Detener el Servidor Local**
 
    Cuando termines de probar, vuelve al terminal donde se ejecuta vercel dev y presiona Ctrl + C. Confirma si te lo pide (S o Y).
