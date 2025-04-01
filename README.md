@@ -895,6 +895,11 @@ Si deseas desplegar tu aplicación en la web:
 
 2. Configura la API Key en Vercel:
    - Ve al dashboard de tu proyecto en Vercel -> Settings -> Environment Variables
+
+## Captura:
+
+!()[iapi_key.png]
+     
    - Añade una variable llamada GOOGLE_API_KEY con tu clave API como valor
    - Asegúrate de que esté disponible para Production, Preview y Development
 
