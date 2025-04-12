@@ -463,15 +463,6 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 - **Marked.js**: Para conversión de markdown a HTML
 - **Prism.js**: Para resaltado de sintaxis en bloques de código
 
-### 🔄 Funcionalidad JavaScript
-
-- **executeQuery()**: Envía consultas a la API y procesa respuestas
-- **displayResult()**: Muestra resultados formateados
-- **copyToClipboard()**: Copia resultados al portapapeles
-- **saveAsTextFile()**: Guarda resultados como archivo .txt
-- **showLoading() / hideLoading()**: Controla la visibilidad del indicador de carga
-- **clearAll()**: Limpia la consulta y los resultados
-
 ## 📜 Funcionalidad ✨ (JavaScript)
 
 - [✅] Captura todos los elementos clave de la página HTML (botones 🔘, área de texto 📝, caja de resultados 📄) para darles funcionalidad.
@@ -482,7 +473,16 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 - [✅] Proporciona botones para copiar 📋 el texto de la respuesta o descargarlo como archivo `.txt` 📁.
 - [✅] Incluye funciones adicionales para controlar la animación de carga ⏳, limpiar la interfaz 🧹 y mostrar notificaciones 🔔 al usuario.
   
-# CSS Styles Documentation
+ ### 🔄 Principales funciones JavaScript:
+
+- **executeQuery()**: Envía consultas a la API y procesa respuestas
+- **displayResult()**: Muestra resultados formateados
+- **copyToClipboard()**: Copia resultados al portapapeles
+- **saveAsTextFile()**: Guarda resultados como archivo .txt
+- **showLoading() / hideLoading()**: Controla la visibilidad del indicador de carga
+- **clearAll()**: Limpia la consulta y los resultados
+ 
+# CSS Styles Documentation:
 
 ## 1. Variables CSS (Custom Properties)
 ## 2. Reset y Box-Sizing Global
@@ -1048,7 +1048,7 @@ pre[class*="language-"] code {
 }
 
 ```
-## 🎨 Funcionalidades de la App ✨ (Codigo Estilo Style.CSS)
+## 🎨 Funcionalidades de la App ✨ (Codigo Estilo Style.CSS):
 
 - [✅] Define el estilo visual de la aplicación Gemini AI, asegurando una apariencia coherente y atractiva 💅.
 - [✅] Establece una **paleta de colores** 🎨 con **variables CSS**, permitiendo cambiar entre modo claro ☀️ y oscuro 🌙 con facilidad.
