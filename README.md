@@ -13,6 +13,12 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
    ```
    Si no los tienes, descárgalos desde [nodejs.org](https://nodejs.org/) (se recomienda la versión LTS).
 
+
+## NODE DESCARGAR E INSTALAR:
+
+![Mi imagen](RECURSOS/Screenshot_335.png)
+
+
 2. **Vercel CLI:** La herramienta de línea de comandos de Vercel. Instálala globalmente e inicia sesión:
    ```bash
    npm install -g vercel
