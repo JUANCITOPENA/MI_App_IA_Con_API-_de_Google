@@ -54,15 +54,15 @@ Instala estas herramientas iniciales y esenciales en tu computadora **ANTES** de
 
 ## VISUAL STUDIO DESCARGAR E INSTALAR- VAMOS AL ENLACE:
 
-![Mi imagen](RECURSOS/Screenshot_336.png)
+![Mi imagen](RECURSOS/Screenshot_332.png)
 
 ## LE DAMOS A ESTA OPCION DE WINDOWS O EL SISTEMA QUE TENGAMOS:
 
-![Mi imagen](RECURSOS/Screenshot_337.png)
+![Mi imagen](RECURSOS/Screenshot_333.png)
 
 ## PANTALLA PRINCIPAL UNA VEZ HEMOS INSTALADO:
 
-![Mi imagen](RECURSOS/Screenshot_338.png)
+![Mi imagen](RECURSOS/Screenshot_334.png)
 
 
 ### ⚙️ PASO 2: Instalar Node.js y npm
@@ -90,11 +90,11 @@ Instala estas herramientas iniciales y esenciales en tu computadora **ANTES** de
  
 ## NODE DESCARGAR E INSTALAR- VAMOS AL ENLACE:
 
-![Mi imagen](RECURSOS/Screenshot_334.png)
+![Mi imagen](RECURSOS/Screenshot_330.png)
 
 ## LE DAMOS A ESTA OPCION:
 
-![Mi imagen](RECURSOS/Screenshot_335.png)
+![Mi imagen](RECURSOS/Screenshot_331.png)
  
    
 
@@ -1214,10 +1214,27 @@ Ahora estás listo para probar la aplicación en tu computadora.
 
 ## Captura:
 
-![Mi imagen](Screenshot_294.png)
+![Mi imagen](RECURSOS/Screenshot_335.png)
 
-![Mi imagen](Screenshot_298.png)
+![Mi imagen](RECURSOS/Screenshot_336.png)
 
+![Mi imagen](RECURSOS/Screenshot_337.png)
+
+![Mi imagen](RECURSOS/Screenshot_338.png)
+
+![Mi imagen](RECURSOS/Screenshot_339.png)
+
+![Mi imagen](RECURSOS/Screenshot_340.png)
+
+![Mi imagen](RECURSOS/Screenshot_340.png)
+
+![Mi imagen](RECURSOS/Screenshot_341.png)
+
+![Mi imagen](RECURSOS/Screenshot_342.png)
+
+![Mi imagen](RECURSOS/Screenshot_343.png)
+
+![Mi imagen](RECURSOS/Screenshot_344.png)
 
 5. **Detener el Servidor Local**
 
