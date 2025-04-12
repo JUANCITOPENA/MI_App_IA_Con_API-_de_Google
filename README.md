@@ -163,47 +163,47 @@ touch index.html style.css .env .gitignore api/generate.js
 
 ```html
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
+<html lang="es" data-theme="light"> <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport para responsividad -->
-  <title>Mi App con Gemini AI</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-</head>
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/10306/10306029.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mi App con Gemini AI</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"> </head>
 
 <body>
-  <div class="container">
-    <h1>Interactúa con Gemini</h1>
+  <div class="theme-toggle-container">
+    <button id="themeToggle" title="Cambiar modo claro/oscuro">🌞</button>
+  </div>
 
-    <!-- Sección del Prompt -->
+  <div class="container">
+    <div style="text-align: center;">
+      <img src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Avatar" style="width: 70px; height: 70px; border-radius: 50%; font-size: 25px;">
+  </div>
+    <h1>🛠️ Creando una Interfaz Personalizada con la API de Google: Uso, Integración y Despliegue con HTML, CSS, JS : Local y en Vercel 😃🚀</h1>
+    
+
     <div class="prompt-section">
       <textarea class="prompt-area" id="promptInput" placeholder="Escribe tu consulta aquí..."></textarea>
       <div class="button-group">
-        <!-- Botón Enviar con Icono -->
         <button id="executeBtn" title="Enviar consulta">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
             <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
           </svg>
           Enviar
         </button>
-        <!-- Botón Limpiar con Icono -->
         <button id="clearBtn" title="Limpiar consulta y resultado">
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
-            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293z"/>
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+              <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293z"/>
+            </svg>
           Limpiar
         </button>
       </div>
     </div>
 
-    <!-- Sección de Resultados -->
     <div class="result-container">
       <div class="result-header">
           <h3>Respuesta de la IA:</h3>
           <div class="result-actions">
-              <!-- Botón Copiar con Icono -->
               <button id="copyBtn" title="Copiar al portapapeles" disabled>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
                   <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
@@ -211,7 +211,6 @@ touch index.html style.css .env .gitignore api/generate.js
                 </svg>
                 Copiar
               </button>
-              <!-- Botón Guardar con Icono -->
               <button id="saveBtn" title="Guardar como .txt" disabled>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
@@ -225,18 +224,14 @@ touch index.html style.css .env .gitignore api/generate.js
     </div>
   </div>
 
-  <!-- Indicador de carga (spinner) -->
   <div class="loading" id="loading" style="display: none;">
     <div class="spinner"></div>
     <span>Cargando...</span>
   </div>
 
-  <!-- Librerías JavaScript (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-  <!-- TU JavaScript (sin cambios necesarios aquí respecto a la versión anterior) -->
   <script>
     // Referencias a elementos del DOM
     const executeBtn = document.getElementById('executeBtn');
@@ -246,12 +241,39 @@ touch index.html style.css .env .gitignore api/generate.js
     const loadingIndicator = document.getElementById('loading');
     const copyBtn = document.getElementById('copyBtn');
     const saveBtn = document.getElementById('saveBtn');
+    const themeToggleBtn = document.getElementById('themeToggle'); // Botón de tema
 
     // Estado inicial de los botones de acción
     copyBtn.disabled = true;
     saveBtn.disabled = true;
 
-    // Event Listeners
+    // --- Funcionalidad del Tema ---
+    const currentTheme = localStorage.getItem('theme') || 'light'; // Obtener tema guardado o usar 'light'
+    document.documentElement.setAttribute('data-theme', currentTheme); // Aplicar tema al cargar
+    themeToggleBtn.textContent = currentTheme === 'light' ? '🌞' : '🌜'; // Establecer icono inicial
+
+    themeToggleBtn.addEventListener('click', () => {
+      let targetTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', targetTheme);
+      localStorage.setItem('theme', targetTheme); // Guardar preferencia
+      themeToggleBtn.textContent = targetTheme === 'light' ? '🌞' : '🌜'; // Actualizar icono
+      // Opcional: Si usas un tema específico de Prism para modo oscuro, cámbialo aquí
+      // updatePrismTheme(targetTheme);
+    });
+
+    // Opcional: Función para cambiar el CSS de Prism si es necesario
+    // function updatePrismTheme(theme) {
+    //   const prismLink = document.querySelector('link[href*="prism"]');
+    //   if (prismLink) {
+    //     prismLink.href = theme === 'dark'
+    //       ? 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css'
+    //       : 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+    //   }
+    // }
+    // updatePrismTheme(currentTheme); // Llamar al cargar la página
+
+
+    // --- Lógica Principal de la App (sin cambios) ---
     executeBtn.addEventListener('click', executeQuery);
     clearBtn.addEventListener('click', clearAll);
     copyBtn.addEventListener('click', copyToClipboard);
@@ -260,7 +282,8 @@ touch index.html style.css .env .gitignore api/generate.js
     async function executeQuery() {
       const prompt = promptInput.value.trim();
       if (!prompt) {
-        alert('Por favor, escribe una consulta.');
+        // Usar un modal o notificación más elegante en lugar de alert
+        showNotification('Por favor, escribe una consulta.');
         return;
       }
       showLoading();
@@ -268,96 +291,140 @@ touch index.html style.css .env .gitignore api/generate.js
       copyBtn.disabled = true;
       saveBtn.disabled = true;
       try {
+        // IMPORTANTE: Asegúrate de que esta ruta '/api/generate' sea correcta
+        // para tu backend o configuración de servidor.
         const response = await fetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: prompt }),
         });
+
         if (!response.ok) {
           let errorMsg = 'Error al comunicarse con el servidor.';
           try {
             const errorData = await response.json();
             errorMsg = `Error ${response.status}: ${errorData.error || 'Detalles no disponibles.'}`;
-          } catch (e) { errorMsg = `Error ${response.status}: ${response.statusText}`; }
+          } catch (e) {
+            errorMsg = `Error ${response.status}: ${response.statusText}`;
+          }
           throw new Error(errorMsg);
         }
+
         const data = await response.json();
+
+        // Validación más robusta de la respuesta de la API Gemini
         if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
           const contentPart = data.candidates[0].content.parts[0];
-          displayResult(contentPart);
           if (contentPart.text) {
+            displayResult(contentPart.text); // Pasar solo el texto
             copyBtn.disabled = false;
             saveBtn.disabled = false;
+          } else {
+             console.warn('La parte de contenido no contiene texto:', contentPart);
+             resultBox.innerHTML = '<span class="error-message">La respuesta no contiene texto legible.</span>';
+             copyBtn.disabled = true;
+             saveBtn.disabled = true;
           }
         } else {
-          console.warn('Respuesta inesperada de la API:', data);
-          resultBox.textContent = 'No se recibió una respuesta válida del modelo.';
+          console.warn('Respuesta inesperada o vacía de la API:', data);
+          resultBox.innerHTML = '<span class="error-message">No se recibió una respuesta válida del modelo.</span>';
           copyBtn.disabled = true;
           saveBtn.disabled = true;
         }
       } catch (error) {
         console.error('Error en executeQuery:', error);
-        resultBox.innerHTML = `<span style="color: var(--danger-color);">Error: ${error.message}</span>`; // Usar variable CSS para color de error
-        copyBtn.disabled = false; // Habilitar para copiar el error
-        saveBtn.disabled = false; // Habilitar para guardar el error
+        // Mostrar error de forma más visible
+        resultBox.innerHTML = `<span class="error-message">Error: ${error.message}</span>`;
+        // Permitir copiar/guardar el mensaje de error
+        copyBtn.disabled = false;
+        saveBtn.disabled = false;
       } finally {
         hideLoading();
       }
     }
 
-    function displayResult(content) {
-      if (content.text) {
-        resultBox.innerHTML = marked.parse(content.text);
+    function displayResult(text) {
+        // Usar marked para convertir Markdown a HTML
+        resultBox.innerHTML = marked.parse(text);
+        // Resaltar sintaxis en los bloques de código generados
         Prism.highlightAllUnder(resultBox);
-      } else {
-        console.warn('Contenido no textual recibido:', content);
-        resultBox.textContent = '[Contenido no textual recibido]';
-      }
     }
 
     async function copyToClipboard() {
-        const textToCopy = resultBox.innerText;
-        if (!textToCopy || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') { return alert('No hay resultado para copiar.'); }
-        try {
-            await navigator.clipboard.writeText(textToCopy);
-            const originalHTML = copyBtn.innerHTML;
-            copyBtn.innerHTML = '¡Copiado!';
-            copyBtn.disabled = true;
-            setTimeout(() => { copyBtn.innerHTML = originalHTML; copyBtn.disabled = false; }, 1500);
-        } catch (err) { console.error('Error al copiar:', err); alert('No se pudo copiar el texto.'); }
+      const textToCopy = resultBox.innerText; // Usar innerText para obtener solo el texto visible
+      if (!textToCopy || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') {
+        showNotification('No hay resultado para copiar.');
+        return;
+       }
+      try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalHTML = copyBtn.innerHTML; // Guardar el SVG y texto
+          copyBtn.textContent = '¡Copiado!'; // Solo texto para simplicidad temporal
+          copyBtn.disabled = true;
+          setTimeout(() => {
+            copyBtn.innerHTML = originalHTML; // Restaurar SVG y texto
+            copyBtn.disabled = false;
+          }, 1500);
+      } catch (err) {
+          console.error('Error al copiar:', err);
+          showNotification('No se pudo copiar el texto.');
+      }
     }
 
     function saveAsTextFile() {
-        const textToSave = resultBox.innerText;
-        if (!textToSave || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') { return alert('No hay resultado para guardar.'); }
-        const blob = new Blob([textToSave], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const anchor = document.createElement('a');
-        anchor.href = url;
-        anchor.download = 'gemini-respuesta.txt';
-        document.body.appendChild(anchor);
-        anchor.click();
-        document.body.removeChild(anchor);
-        URL.revokeObjectURL(url);
+        const textToSave = resultBox.innerText; // Usar innerText
+        if (!textToSave || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') {
+          showNotification('No hay resultado para guardar.');
+          return;
+        }
+        try {
+            const blob = new Blob([textToSave], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            // Nombre de archivo más descriptivo
+            const timestamp = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+            anchor.download = `gemini-respuesta-${timestamp}.txt`;
+            document.body.appendChild(anchor); // Necesario para Firefox
+            anchor.click();
+            document.body.removeChild(anchor);
+            URL.revokeObjectURL(url); // Liberar memoria
+        } catch (error) {
+            console.error('Error al guardar archivo:', error);
+            showNotification('Ocurrió un error al intentar guardar el archivo.');
+        }
     }
 
     function showLoading() {
       loadingIndicator.style.display = 'flex';
       executeBtn.disabled = true;
+      clearBtn.disabled = true; // Deshabilitar limpiar mientras carga
     }
+
     function hideLoading() {
       loadingIndicator.style.display = 'none';
       executeBtn.disabled = false;
+      clearBtn.disabled = false;
     }
+
     function clearAll() {
       promptInput.value = '';
-      resultBox.innerHTML = 'Esperando consulta...';
+      resultBox.innerHTML = 'Esperando consulta...'; // Restaurar mensaje inicial
       copyBtn.disabled = true;
       saveBtn.disabled = true;
     }
+
+    // Función simple para mostrar notificaciones (reemplaza alert)
+    function showNotification(message) {
+        // Puedes implementar un sistema de notificaciones más sofisticado aquí
+        // Por ahora, usaremos un simple alert como placeholder
+        alert(message);
+    }
+
   </script>
 </body>
 </html>
+
 ```
 
 ## 📋 Estructura del Documento
