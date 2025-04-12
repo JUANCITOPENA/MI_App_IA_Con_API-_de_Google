@@ -13,16 +13,6 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
    ```
    Si no los tienes, descárgalos desde [nodejs.org](https://nodejs.org/) (se recomienda la versión LTS).
 
-
-## NODE DESCARGAR E INSTALAR- VAMOS AL ENLACE:
-
-![Mi imagen](RECURSOS/Screenshot_334.png)
-
-## LE DAMOS A ESTA OPCION:
-
-![Mi imagen](RECURSOS/Screenshot_335.png)
-
-
 2. **Vercel CLI:** La herramienta de línea de comandos de Vercel. Instálala globalmente e inicia sesión:
    ```bash
    npm install -g vercel
@@ -33,18 +23,6 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 3. **Google Gemini API Key:** Necesitas una clave API para usar Gemini. Puedes obtenerla desde [Google AI Studio](https://aistudio.google.com/) o la consola de Google Cloud. Asegúrate de que la API esté habilitada para tu proyecto.
 
 4. **Un Editor de Código:** Como [Visual Studio Code](https://code.visualstudio.com/), Sublime Text, etc. En Nuestro Caso usaremos el VISUAL STUDIO CODE:
-
-## VISUAL STUDIO DESCARGAR E INSTALAR- VAMOS AL ENLACE:
-
-![Mi imagen](RECURSOS/Screenshot_336.png)
-
-## LE DAMOS A ESTA OPCION DE WINDOWS O EL SISTEMA QUE TENGAMOS:
-
-![Mi imagen](RECURSOS/Screenshot_337.png)
-
-## PANTALLA PRINCIPAL UNA VEZ HEMOS INSTALADO:
-
-![Mi imagen](RECURSOS/Screenshot_338.png)
 
 
 5. **Git (Opcional pero recomendado):** Si planeas usar GitHub.
@@ -72,6 +50,20 @@ Instala estas herramientas iniciales y esenciales en tu computadora **ANTES** de
    - Haz clic en "Instalar".
 6. ¡Listo! Ahora puedes buscar "Visual Studio Code" en tu menú de inicio y abrirlo.
 
+
+## VISUAL STUDIO DESCARGAR E INSTALAR- VAMOS AL ENLACE:
+
+![Mi imagen](RECURSOS/Screenshot_336.png)
+
+## LE DAMOS A ESTA OPCION DE WINDOWS O EL SISTEMA QUE TENGAMOS:
+
+![Mi imagen](RECURSOS/Screenshot_337.png)
+
+## PANTALLA PRINCIPAL UNA VEZ HEMOS INSTALADO:
+
+![Mi imagen](RECURSOS/Screenshot_338.png)
+
+
 ### ⚙️ PASO 2: Instalar Node.js y npm
 
 **¿Qué es?** Node.js es el entorno que permite ejecutar JavaScript fuera del navegador. npm (Node Package Manager) viene incluido y se usa para instalar librerías.
@@ -94,6 +86,16 @@ Instala estas herramientas iniciales y esenciales en tu computadora **ANTES** de
    - Escribe `node -v` y presiona Enter.
    - Escribe `npm -v` y presiona Enter.
    - Si ves números de versión, ¡todo está correcto!
+ 
+## NODE DESCARGAR E INSTALAR- VAMOS AL ENLACE:
+
+![Mi imagen](RECURSOS/Screenshot_334.png)
+
+## LE DAMOS A ESTA OPCION:
+
+![Mi imagen](RECURSOS/Screenshot_335.png)
+ 
+   
 
 ### 🔄 PASO 3: Instalar Vercel CLI
 
