@@ -162,6 +162,10 @@ touch index.html style.css .env .gitignore api/generate.js
 
 # 📄 Código del Archivo `index.html`
 
+![Mi imagen](RECURSOS/Screenshot_342.png)
+
+# 📄 Código del Archivo `index.html`
+
 ```html
 <!DOCTYPE html>
 <html lang="es" data-theme="light"> <head>
@@ -1032,6 +1036,8 @@ pre[class*="language-"] code {
 
 # Project Documentation
 
+![Mi imagen](RECURSOS/Screenshot_341.png)
+
 ## API Implementation (api/generate.js)
 
 ```javascript
@@ -1124,6 +1130,8 @@ module.exports = allowCors(handler);
 ```
 
 ## .gitignore Configuration
+
+![Mi imagen](RECURSOS/Screenshot_344.png)
 
 ```
 # Dependencias de Node.js
@@ -1226,15 +1234,9 @@ Ahora estás listo para probar la aplicación en tu computadora.
 
 ![Mi imagen](RECURSOS/Screenshot_340.png)
 
-![Mi imagen](RECURSOS/Screenshot_340.png)
-
-![Mi imagen](RECURSOS/Screenshot_341.png)
-
-![Mi imagen](RECURSOS/Screenshot_342.png)
-
 ![Mi imagen](RECURSOS/Screenshot_343.png)
 
-![Mi imagen](RECURSOS/Screenshot_344.png)
+
 
 5. **Detener el Servidor Local**
 
