@@ -474,13 +474,14 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 
 ## 📜 Funcionalidad ✨ (JavaScript)
 
-🔗 Este script comienza agarrando todos los elementos importantes de la página HTML (botones 🔘, el área de texto 📝, la caja de resultados 📄, etc.) para poder interactuar con ellos y darles vida.
-🎨 Luego, se encarga de la magia del cambio de tema: permite cambiar entre un look claro ☀️ y uno oscuro 🌙 con solo un clic. ¡Lo mejor es que recuerda tu preferencia 💾 para la próxima vez que visites!
-🚀 El corazón de la aplicación está en la función que se activa al presionar "Enviar". Toma tu consulta, muestra una animación de carga ⏳, y se comunica de forma segura con el backend 📡 (que a su vez habla con la IA de Google Gemini 🤖). Espera pacientemente la respuesta y maneja con cuidado tanto los éxitos ✅ como los posibles errores ❌ que puedan ocurrir en el camino.
-✨ Cuando llega una respuesta válida de la IA, otra parte del script se asegura de mostrarla de forma bonita 👀 en la caja de resultados. Es inteligente y puede formatear texto usando Markdown (como **negritas** o listas) e incluso colorear bloques de código 🌈 para que sean fáciles de leer.
-📋💾 Para tu conveniencia, hay botones que, gracias a este script, te permiten copiar 📋 el texto de la respuesta directamente a tu portapapeles o descargarla como un archivo de texto `.txt` 📁 en tu dispositivo, ¡listo para usar!
-⚙️ Finalmente, incluye pequeñas funciones de ayuda para controlar la animación de carga ⏳, limpiar la interfaz 🧹 y mostrar mensajes o notificaciones simples 🔔 al usuario.
-
+- [✅] Captura todos los elementos clave de la página HTML (botones 🔘, área de texto 📝, caja de resultados 📄) para darles funcionalidad.
+- [✅] Implementa un cambio de tema 🎨 con opción entre modo claro ☀️ y oscuro 🌙, recordando la preferencia 💾 para futuras visitas.
+- [✅] Gestiona el envío de consultas 🚀 con animación de carga ⏳ y comunicación segura con el backend 📡, que se conecta con la IA de Google Gemini 🤖.
+- [✅] Maneja cuidadosamente tanto respuestas exitosas ✅ como posibles errores ❌.
+- [✅] Formatea la respuesta de la IA con Markdown (**negritas**, listas) y colorea bloques de código 🌈 para mejorar la legibilidad.
+- [✅] Proporciona botones para copiar 📋 el texto de la respuesta o descargarlo como archivo `.txt` 📁.
+- [✅] Incluye funciones adicionales para controlar la animación de carga ⏳, limpiar la interfaz 🧹 y mostrar notificaciones 🔔 al usuario.
+  
 # CSS Styles Documentation
 
 ## 1. Variables CSS (Custom Properties)
