@@ -484,8 +484,12 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 ## 7. Loading Spinner
 ## 8. Media Queries para Responsividad
 
+
+# Codigo Arvhivo CSS Hoja Styles.css
+
 ![Mi imagen](RECURSOS/Screenshot_343.png)
 
+# Codigo Arvhivo CSS Hoja Styles.css
 
 ```css
 /* style.css */
@@ -1132,7 +1136,7 @@ const handler = async (req, res) => {
 module.exports = allowCors(handler);
 ```
 
-## .gitignore Configuration
+## .gitignore Configuration: Aqui en este archivo vas a Poner los Arvhivos que deben subirse al Github o Vercel.
 
 ![Mi imagen](RECURSOS/Screenshot_344.png)
 
@@ -1157,7 +1161,7 @@ yarn-error.log*
 .vercel
 ```
 
-## Environment Variables (.env)
+## Environment Variables (.env): Copia esta Linea de Codigo en el archivo .env: Aqui va la Clave APiKey que te Dio Google AI Studio. (No Puede ser Publica)
 
 ```
 # Pega tu clave API de Google aquí SIN comillas ni espacios extra
@@ -1166,40 +1170,47 @@ GOOGLE_API_KEY=AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## Project Setup Instructions
 
-### Inicializar npm e Instalar Dependencias
+### Inicializar npm e Instalar Dependencias: SIgue estos Pasos: En Visual Studio:
 
-Abre tu terminal dentro de la carpeta mi-proyecto-ia y ejecuta los siguientes comandos:
+#### Abre tu terminal en Visual Studio dentro de la carpeta mi-proyecto-ia y ejecuta los siguientes comandos:
 
 ```bash
+
 # 1. Inicializa npm (crea package.json)
 # La opción -y acepta todas las configuraciones por defecto
+
 npm init -y
 
 # 2. Instala las dependencias necesarias (axios, cors, dotenv)
+
 npm install axios cors dotenv
+
+
 ```
 
-### Ejecutar el Proyecto Localmente
+### Ejecutar el Proyecto Localmente: EN la misma Terminal:
 
-Ahora estás listo para probar la aplicación en tu computadora.
+##### Ahora estás listo para probar la aplicación en tu computadora.
 
 1. **Iniciar el Servidor de Desarrollo Vercel**
 
-   En tu terminal (aún dentro de la carpeta mi-proyecto-ia), ejecuta:
+   En tu terminal (aún dentro de la carpeta mi-proyecto-ia), ejecuta: Vercel dev
 
    ```bash
+   
    vercel dev
+   
    ```
 
 2. **Responder a las Preguntas de Configuración (Solo la Primera Vez)**
 
-   Si es la primera vez que ejecutas vercel dev en esta carpeta, Vercel CLI necesita asociarla con tu cuenta y un proyecto (incluso para desarrollo local). Te hará algunas preguntas:
+   ##### Si es la primera vez que ejecutas vercel dev en esta carpeta, Vercel CLI necesita asociarla con tu cuenta y un proyecto (incluso para desarrollo local). Te hará algunas preguntas:
 
-   - `? Set up and deploy "[ruta/a/tu/carpeta]"?` -> Responde Y (o presiona Enter).
-   - `? Which scope should contain your project?` -> Selecciona tu scope personal (tu nombre de usuario) y presiona Enter.
-   - `? Link to existing project?` -> Responde N (o presiona Enter), ya que es nuevo para Vercel.
-   - `? What's your project's name?` -> Escribe un nombre válido, todo en minúsculas (ej. mi-proyecto-ia) y presiona Enter.
-   - `? In which directory is your code located?` -> Responde . (o presiona Enter).
+   - `? Set up and deploy "[ruta/a/tu/carpeta]"?` -> Responde con la Letra (Y) (o presiona Enter).
+   - `? Which scope should contain your project?` -> Selecciona tu scope personal (tu nombre de usuario) o Simplemente presiona Enter.
+   - `? Link to existing project?` -> Responde con la Letra (N) (o presiona Enter), ya que es nuevo para Vercel.
+   - `? What's your project's name?` -> Presiona Enter: Si quieres Cambiar el Nombre del Proyecto Escribe un nombre válido, todo en minúsculas (ej. mi-proyecto-ia) y presiona Enter.
+   - `? In which directory is your code located?` -> Presiona Enter.
    - (Si aparece) `? Want to modify these settings?` -> Responde N (o presiona Enter).
 
    Después de responder, Vercel guardará esta configuración en una carpeta oculta .vercel y no volverá a preguntar en futuras ejecuciones de vercel dev en esta carpeta.
@@ -1237,10 +1248,6 @@ Ahora estás listo para probar la aplicación en tu computadora.
 
 ![Mi imagen](RECURSOS/Screenshot_340.png)
 
-
-
-
-
 5. **Detener el Servidor Local**
 
    Cuando termines de probar, vuelve al terminal donde se ejecuta vercel dev y presiona Ctrl + C. Confirma si te lo pide (S o Y).
@@ -1266,4 +1273,35 @@ Si deseas desplegar tu aplicación en la web:
 
 3. Despliega: Desde tu terminal en la carpeta del proyecto, ejecuta el comando de despliegue nuevamente si es necesario.
 
-   
+  ## Ahora Solo debe probar en tu pc o movil. 
+
+  # 🚀 Bienvenidos al Proyecto
+
+Los invito a entrar al **repo**, donde encontrarán la guía completa para implementar la API de Google en una interfaz personalizada. Síganla paso a paso y exploren todas sus posibilidades.
+
+💬 No duden en dejar cualquier comentario en redes sociales, ¡me encanta conocer sus opiniones y mejoras!  
+📢 Si les gustó el contenido, síganme para más guías y tutoriales sobre desarrollo y tecnología.  
+🌍 Compártanlo con su comunidad para que llegue a más personas apasionadas por la innovación.  
+⭐ Y no olviden dejarle una **estrellita en GitHub**, eso ayuda muchísimo a seguir creando contenido útil para todos.  
+
+Nos vemos en el próximo proyecto. ¡A programar se ha dicho! 😃🔥  
+
+---
+
+## 📡 ¡Apoya el contenido!
+
+No olvides **suscribirte**, darle **like** y **compartir** este video para ayudarnos a seguir creando contenido como este. ¡Vamos a comenzar! 😊📡  
+
+#RedesCisco #ProyectoDeRedes #CiscoPacketTracer 🌐💻📡  
+
+---
+
+## 📢 Sígueme en Redes Sociales  
+
+1. 🎬 **YouTube**: [@JuancitoPenaV](https://www.youtube.com/@JuancitoPenaV)  
+2. 👨‍💼 **LinkedIn**: [Juancito Peña](https://www.linkedin.com/in/juancitope%C3%B1a/)  
+3. 📰 **Blog**: [Adviser Tecnology](https://advisertecnology.com/)  
+4. 📷 **Instagram**: [@juancito.pena.v](https://www.instagram.com/juancito.pena.v/)  
+5. 📑 **Facebook**: [Juancito Peña V](https://www.facebook.com/juancito.p.v)  
+6. 🐦 **Twitter**: [@JuancitoPenaV](https://twitter.com/JuancitoPenaV)  
+7. 📰 **Blog**: [Adviser Tecnology](https://advisertecnology.com/)  
