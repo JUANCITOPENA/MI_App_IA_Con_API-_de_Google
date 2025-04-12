@@ -1298,7 +1298,7 @@ No olvides **suscribirte**, darle **like** y **compartir** este video para ayuda
 
 ## 📢 Sígueme en Redes Sociales  
 
-1. 🎬 **YouTube**: [@JuancitoPenaV](https://www.youtube.com/@JuancitoPenaV)  
+1. 🎬 **YouTube**: [@JuancitoPenaV](https://www.youtube.com/channel/UCSob-3E5z4IHtMF5B4bN-FA)  
 2. 👨‍💼 **LinkedIn**: [Juancito Peña](https://www.linkedin.com/in/juancitope%C3%B1a/)  
 3. 📰 **Blog**: [Adviser Tecnology](https://advisertecnology.com/)  
 4. 📷 **Instagram**: [@juancito.pena.v](https://www.instagram.com/juancito.pena.v/)  
