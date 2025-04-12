@@ -14,7 +14,11 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
    Si no los tienes, descárgalos desde [nodejs.org](https://nodejs.org/) (se recomienda la versión LTS).
 
 
-## NODE DESCARGAR E INSTALAR:
+## NODE DESCARGAR E INSTALAR- VAMOS AL ENLACE:
+
+![Mi imagen](RECURSOS/Screenshot_334.png)
+
+## LE DAMOS A ESTA OPCION:
 
 ![Mi imagen](RECURSOS/Screenshot_335.png)
 
