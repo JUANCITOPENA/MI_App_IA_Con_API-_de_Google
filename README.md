@@ -483,310 +483,549 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 /* style.css */
 
 /* 1. Variables CSS (Custom Properties) */
+/* Aquí puedes ajustar los colores y tamaños base para toda la aplicación */
 :root {
-    /* Paleta de Colores Principal */
-    --primary-color: #3498db;          /* Azul principal (Enviar) */
-    --primary-color-darker: #2980b9;
-    --danger-color: #e74c3c;           /* Rojo (Limpiar, Errores) */
-    --danger-color-darker: #c0392b;
-    --info-color: #0dcaf0;            /* Azul claro (Copiar) */
-    --info-color-darker: #0aa3c2;
-    --success-color: #198754;         /* Verde (Guardar) */
-    --success-color-darker: #157347;
-    --secondary-color: #6c757d;       /* Gris (Deshabilitado Acciones) */
-    --disabled-color: #bdc3c7;        /* Gris más claro (Deshabilitado Principal) */
-    --disabled-opacity: 0.65;
-  
-    /* Paleta de Texto y Fondo */
-    --text-color-dark: #2c3e50;       /* Títulos oscuros */
-    --text-color-medium: #34495e;     /* Subtítulos */
-    --text-color-normal: #333;        /* Texto principal */
-    --text-color-light: #ccc;         /* Texto en fondo oscuro (código) */
-    --text-color-white: #fff;         /* Texto en botones */
-  
-    --background-color-body: #f4f7f6;
-    --background-color-container: #fff;
-    --background-color-result: #f9f9f9;
-    --background-color-code: #2d2d2d; /* Tema Prism Tomorrow Night */
-    --background-color-overlay: rgba(255, 255, 255, 0.7);
-  
-    /* Bordes */
-    --border-color-light: #e0e0e0;     /* Borde caja resultado */
-    --border-color-medium: #dcdcdc;    /* Borde textarea */
-    --border-radius-standard: 4px;
-  
-    /* Tipografía y Espaciado */
-    --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-family-mono: "Consolas", "Monaco", monospace;
-    --base-font-size: 16px;
-    --line-height-normal: 1.6;
-    --spacing-unit: 8px; /* Unidad base para márgenes/paddings */
-  
-    --button-padding-y: 10px;
-    --button-padding-x: 20px;
-    --button-action-padding-y: 5px;
-    --button-action-padding-x: 10px;
-  }
-  
-  /* 2. Reset y Box-Sizing Global */
-  html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    font-family: var(--font-family-sans);
-    font-size: var(--base-font-size);
-    margin: 0;
-    padding: calc(var(--spacing-unit) * 2.5); /* 20px */
-    background-color: var(--background-color-body);
-    color: var(--text-color-normal);
-    line-height: var(--line-height-normal);
-  }
-  
-  /* 3. Estilos del Contenedor Principal */
-  .container {
-    max-width: 800px;
-    margin: calc(var(--spacing-unit) * 2.5) auto; /* 20px auto */
-    padding: calc(var(--spacing-unit) * 3);     /* 24px ~= 25px */
-    background-color: var(--background-color-container);
-    border-radius: calc(var(--border-radius-standard) * 2); /* 8px */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    color: var(--text-color-dark);
-    margin-top: 0;
-    margin-bottom: calc(var(--spacing-unit) * 4); /* 32px ~= 30px */
-  }
-  
-  /* 4. Sección del Prompt */
-  .prompt-section {
-    margin-bottom: calc(var(--spacing-unit) * 3); /* 24px ~= 25px */
-  }
-  
-  .prompt-area {
-    width: 100%;
-    padding: calc(var(--spacing-unit) * 1.5); /* 12px */
-    border: 1px solid var(--border-color-medium);
-    border-radius: var(--border-radius-standard);
-    font-size: inherit; /* Heredar del body */
-    min-height: 100px;
-    resize: vertical;
-    margin-bottom: calc(var(--spacing-unit) * 1.25); /* 10px */
-    font-family: inherit; /* Asegurar que use la fuente del body */
-  }
-  
-  /* 5. Grupos de Botones */
-  .button-group,
-  .result-actions {
-    display: flex;
-    gap: var(--spacing-unit); /* 8px-10px de espacio */
-  }
-  
-  /* Estilo base para TODOS los botones */
-  button {
-    border: none;
-    border-radius: var(--border-radius-standard);
-    cursor: pointer;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
-    display: inline-flex;      /* Para alinear icono y texto */
-    align-items: center;       /* Centrar icono y texto verticalmente */
-    justify-content: center;   /* Centrar contenido horizontalmente */
-    gap: calc(var(--spacing-unit) * 0.6); /* 5px */
-    font-size: inherit;        /* Usar tamaño de fuente base */
-    color: var(--text-color-white); /* Texto blanco por defecto */
-    line-height: 1.2;          /* Ajustar altura de línea para botones */
-  }
-  
-  /* Estilo específico botones principales (Enviar, Limpiar) */
-  .button-group button {
-    padding: var(--button-padding-y) var(--button-padding-x);
-    font-size: var(--base-font-size); /* 16px */
-  }
-  
-  #executeBtn { background-color: var(--primary-color); }
-  #executeBtn:hover:not(:disabled) { background-color: var(--primary-color-darker); }
-  
-  #clearBtn { background-color: var(--danger-color); }
-  #clearBtn:hover:not(:disabled) { background-color: var(--danger-color-darker); }
-  
-  /* Deshabilitado para botones principales */
-  .button-group button:disabled {
-      background-color: var(--disabled-color);
-      cursor: not-allowed;
-      opacity: var(--disabled-opacity);
-  }
-  
-  /* Estilo específico botones de acción (Copiar, Guardar) */
-  .result-actions button {
-    padding: var(--button-action-padding-y) var(--button-action-padding-x);
-    font-size: calc(var(--base-font-size) - 2px); /* 14px */
-  }
-  
-  #copyBtn { background-color: var(--info-color); }
-  #copyBtn:hover:not(:disabled) { background-color: var(--info-color-darker); }
-  
-  #saveBtn { background-color: var(--success-color); }
-  #saveBtn:hover:not(:disabled) { background-color: var(--success-color-darker); }
-  
-  /* Deshabilitado para botones de acción */
-  .result-actions button:disabled {
-    background-color: var(--secondary-color); /* Usar gris secundario */
+  /* --- Tema Claro (Predeterminado) --- */
+  --primary-color: #3498db;          /* Azul principal (Enviar) */
+  --primary-color-darker: #2980b9;
+  --danger-color: #e74c3c;           /* Rojo (Limpiar, Errores) */
+  --danger-color-darker: #c0392b;
+  --info-color: #0dcaf0;             /* Azul claro (Copiar) */
+  --info-color-darker: #0aa3c2;
+  --success-color: #198754;          /* Verde (Guardar) */
+  --success-color-darker: #157347;
+  --secondary-color: #6c757d;        /* Gris (Deshabilitado Acciones) */
+  --disabled-color: #bdc3c7;         /* Gris más claro (Deshabilitado Principal) */
+  --disabled-opacity: 0.65;
+
+  --text-color-dark: #2c3e50;         /* Títulos oscuros */
+  --text-color-medium: #34495e;       /* Subtítulos */
+  --text-color-normal: #333;          /* Texto principal */
+  --text-color-light: #ccc;           /* Texto en fondo oscuro (código) */
+  --text-color-white: #fff;           /* Texto en botones */
+  --text-color-error: var(--danger-color); /* Color para mensajes de error */
+  --text-color-placeholder: #888;     /* Color para placeholder */
+
+  --background-color-body: #f4f7f6;
+  --background-color-container: #ffffff;
+  --background-color-input: #ffffff;
+  --background-color-result: #f9f9f9;
+  --background-color-code: #f5f2f0; /* Color base claro para Prism */
+  --background-color-overlay: rgba(255, 255, 255, 0.7);
+  --background-color-button-toggle: #eee;
+  --background-color-button-toggle-hover: #ddd;
+
+
+  --border-color-light: #e0e0e0;       /* Borde caja resultado */
+  --border-color-medium: #dcdcdc;      /* Borde textarea */
+  --border-color-focus: var(--primary-color); /* Borde al enfocar */
+  --border-radius-standard: 4px;
+  --border-radius-large: 8px;
+
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-container: 0 4px 8px var(--shadow-color);
+  --shadow-button-hover: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  /* --- AJUSTE GLOBAL: Tamaño de fuente base --- */
+  /* Afecta a la mayoría de los textos si usan 'inherit' o 'var(--base-font-size)' */
+  --base-font-size: 17px;
+  --line-height-normal: 1.6; /* Altura de línea estándar */
+  --spacing-unit: 8px; /* Unidad base para márgenes/paddings */
+
+  --button-padding-y: 10px;
+  --button-padding-x: 20px;
+  --button-action-padding-y: 5px;
+  --button-action-padding-x: 10px;
+
+  --transition-speed: 0.2s; /* Velocidad de las animaciones */
+}
+
+/* --- Tema Oscuro --- */
+/* Sobrescribe las variables de :root cuando el tema es oscuro */
+[data-theme="dark"] {
+  --primary-color: #5dade2;
+  --primary-color-darker: #85c1e9;
+  --danger-color: #f1948a;
+  --danger-color-darker: #e6b0aa;
+  --info-color: #76d7c4;
+  --info-color-darker: #a3e4d7;
+  --success-color: #7dcea0;
+  --success-color-darker: #a9dfbf;
+  --secondary-color: #99a3a4;
+  --disabled-color: #7f8c8d;
+
+  --text-color-dark: #ecf0f1;
+  --text-color-medium: #bdc3c7;
+  --text-color-normal: #e0e0e0;
+  --text-color-light: #95a5a6;
+  --text-color-white: #1c1c1c;
+  --text-color-error: var(--danger-color);
+  --text-color-placeholder: #777;
+
+  --background-color-body: #2c3e50;
+  --background-color-container: #34495e;
+  --background-color-input: #465a70;
+  --background-color-result: #405164;
+  --background-color-code: #2d2d2d;
+  --background-color-overlay: rgba(0, 0, 0, 0.6);
+  --background-color-button-toggle: #444;
+  --background-color-button-toggle-hover: #555;
+
+  --border-color-light: #4a637d;
+  --border-color-medium: #56708a;
+  --border-color-focus: var(--primary-color);
+
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-container: 0 4px 12px var(--shadow-color);
+}
+
+/* 2. Reset y Box-Sizing Global */
+/* Configuraciones generales para asegurar consistencia */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--base-font-size); /* Tamaño base aplicado al body */
+  margin: 0;
+  padding: calc(var(--spacing-unit) * 2.5);
+  background-color: var(--background-color-body);
+  color: var(--text-color-normal);
+  line-height: var(--line-height-normal); /* Altura de línea base */
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* 3. Estilos del Contenedor Principal */
+/* El contenedor que envuelve toda la aplicación */
+.container {
+  max-width: 1200px;
+  margin: calc(var(--spacing-unit) * 2.5) auto;
+  padding: calc(var(--spacing-unit) * 3);
+  background-color: var(--background-color-container);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-container);
+  transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  color: var(--text-color-dark);
+  margin-top: 0;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  transition: color var(--transition-speed) ease;
+  font-weight: 600;
+}
+
+/* 4. Sección del Prompt */
+/* Estilos para el área de texto donde el usuario escribe */
+.prompt-section {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.prompt-area {
+  width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5);
+  border: 1px solid var(--border-color-medium);
+  border-radius: var(--border-radius-standard);
+  /* --- TAMAÑO FUENTE PROMPT --- */
+  /* Hereda el tamaño de fuente del body (var(--base-font-size)) */
+  /* Puedes cambiarlo aquí si quieres un tamaño diferente: font-size: 18px; */
+  font-size: 20px;
+  text-align: justify;
+  min-height: 100px;
+  resize: vertical;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  font-family: inherit; /* Usa la misma fuente sans-serif del body */
+  background-color: var(--background-color-input);
+  color: var(--text-color-normal);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+.prompt-area::placeholder {
+    color: var(--text-color-placeholder);
+    opacity: 0.8;
+}
+.prompt-area:focus {
+    outline: none;
+    border-color: var(--border-color-focus);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.2);
+}
+
+
+/* 5. Grupos de Botones */
+/* Estilos para los botones principales (Enviar, Limpiar) y de acción (Copiar, Guardar) */
+.button-group,
+.result-actions {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 1.5);
+  flex-wrap: wrap;
+}
+
+/* Estilo base para TODOS los botones */
+button {
+  border: none;
+  border-radius: var(--border-radius-standard);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, opacity var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing-unit) * 0.75);
+  /* --- TAMAÑO FUENTE BOTONES --- */
+  /* Hereda el tamaño de fuente del body (var(--base-font-size)) */
+  /* Puedes ajustarlo aquí: font-size: 16px; */
+  font-size: inherit;
+  color: var(--text-color-white);
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+}
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-button-hover);
+}
+button:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
+/* Estilo específico botones principales (Enviar, Limpiar) */
+.button-group button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  /* Hereda font-size */
+}
+
+#executeBtn { background-color: var(--primary-color); }
+#executeBtn:hover:not(:disabled) { background-color: var(--primary-color-darker); }
+
+#clearBtn { background-color: var(--danger-color); }
+#clearBtn:hover:not(:disabled) { background-color: var(--danger-color-darker); }
+
+/* Deshabilitado para botones principales */
+.button-group button:disabled {
+    background-color: var(--disabled-color);
     cursor: not-allowed;
     opacity: var(--disabled-opacity);
-  }
-  
-  /* Iconos SVG dentro de botones */
-  button svg {
-    width: 1em;  /* Tamaño relativo al font-size del botón */
-    height: 1em;
-    vertical-align: middle; /* Ayuda a la alineación */
-  }
-  
-  
-  /* 6. Sección de Resultados */
-  .result-container {
-      margin-top: calc(var(--spacing-unit) * 4); /* 32px ~= 30px */
-  }
-  
-  .result-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-unit); /* 8px */
-    flex-wrap: wrap;
-    gap: var(--spacing-unit); /* 8px */
-  }
-  
-  .result-header h3 {
-    margin: 0;
-    padding: 0;
-    color: var(--text-color-medium);
-    border-bottom: none;
-    flex-grow: 1;
-    font-size: calc(var(--base-font-size) + 2px); /* Un poco más grande, ej. 18px */
-  }
-  
-  .result-box {
-    padding: calc(var(--spacing-unit) * 2); /* 16px ~= 15px */
-    border: 1px solid var(--border-color-light);
-    border-radius: var(--border-radius-standard);
-    background-color: var(--background-color-result);
-    min-height: 100px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estilo específico botones de acción (Copiar, Guardar) */
+.result-actions button {
+  padding: var(--button-action-padding-y) var(--button-action-padding-x);
+  /* --- TAMAÑO FUENTE BOTONES ACCIÓN --- */
+  /* Un poco más pequeño que los botones principales */
+  font-size: calc(var(--base-font-size) - 2px); /* 15px ahora */
+}
+
+#copyBtn { background-color: var(--info-color); font-size: 20px; }
+#copyBtn:hover:not(:disabled) { background-color: var(--info-color-darker); }
+
+#saveBtn { background-color: var(--success-color); font-size: 20px;}
+#saveBtn:hover:not(:disabled) { background-color: var(--success-color-darker); }
+
+/* Deshabilitado para botones de acción */
+.result-actions button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+  opacity: var(--disabled-opacity);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Iconos SVG dentro de botones */
+button svg {
+  width: 1em; /* Tamaño relativo al font-size del botón */
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+
+/* 6. Sección de Resultados */
+/* Estilos para el contenedor de la respuesta de la IA */
+.result-container {
+    margin-top: calc(var(--spacing-unit) * 4);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-unit);
+  flex-wrap: wrap;
+  gap: var(--spacing-unit);
+}
+
+.result-header h3 {
+  margin: 0;
+  color: var(--text-color-medium);
+  transition: color var(--transition-speed) ease;
+  flex-grow: 1;
+  font-size: calc(var(--base-font-size) + 2px); /* 19px ahora */
+  font-weight: 600;
+}
+
+.result-box {
+  padding: calc(var(--spacing-unit) * 2);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-standard);
+  background-color: var(--background-color-result);
+  min-height: 150px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: var(--font-family-mono); /* Fuente monoespaciada para resultados */
+  /* --- AJUSTE: TAMAÑO FUENTE RESULTADOS --- */
+  /* Aumentado para que coincida con el tamaño base */
+  font-size: var(--base-font-size); /* 17px ahora */
+  overflow-x: auto;
+  color: var(--text-color-normal);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+/* --- AJUSTE: ESPACIADO ENTRE ELEMENTOS EN RESULTADOS --- */
+/* Controla el espacio vertical (altura) entre párrafos, listas, etc. */
+.result-box p,
+.result-box li,
+.result-box blockquote,
+.result-box pre /* Incluir <pre> para espaciado consistente */ {
+    line-height: var(--line-height-normal); /* Altura de línea estándar (1.6) */
+    /* --- AJUSTE: Reducir márgenes verticales --- */
+    /* Cambia estos valores (ej. 0.2em, 0.4em) para más/menos espacio */
+    margin-top: 0.3em;    /* Espacio reducido arriba */
+    margin-bottom: 0.3em; /* Espacio reducido abajo */
+}
+/* Eliminar margen extra al inicio y final del contenedor de resultados */
+.result-box > *:first-child {
+    margin-top: 0;
+}
+.result-box > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilos para elementos específicos dentro de los resultados */
+.result-box strong {
+    color: var(--text-color-dark);
+    transition: color var(--transition-speed) ease;
+    font-weight: 600;
+}
+.result-box a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+.result-box a:hover {
+    text-decoration: underline;
+    color: var(--primary-color-darker);
+}
+/* Código inline (ej: `variable`) */
+.result-box code:not([class*="language-"]) {
+    background-color: rgba(127, 140, 141, 0.15);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 90%; /* Un poco más pequeño que el texto circundante */
+}
+[data-theme="dark"] .result-box code:not([class*="language-"]) {
+    background-color: rgba(44, 62, 80, 0.5);
+}
+
+/* Estilos para bloques de código resaltados por PrismJS */
+/* El margen vertical se controla ahora por la regla general de arriba */
+pre[class*="language-"] {
+  padding: 1em;
+  overflow: auto;
+  border-radius: var(--border-radius-standard);
+  background: var(--background-color-code);
+  border: 1px solid var(--border-color-light);
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+/* Texto dentro de los bloques de código */
+pre[class*="language-"] code {
+    color: #333; /* Color base para tema claro */
     font-family: var(--font-family-mono);
-    font-size: calc(var(--base-font-size) - 1px); /* 15px */
-    overflow-x: auto;
-  }
-  
-  /* >>> Reducción de espacio entre párrafos en el resultado <<< */
-  .result-box p {
-    margin-top: 0.5em;  /* Espacio reducido arriba */
-    margin-bottom: 0.5em; /* Espacio reducido abajo */
-  }
-  /* Asegurarse que el primer párrafo no tenga margen superior y el último no tenga inferior */
-  .result-box p:first-child {
-      margin-top: 0;
-  }
-  .result-box p:last-child {
-      margin-bottom: 0;
-  }
-  
-  /* Estilos para bloques de código resaltados por PrismJS */
-  pre[class*="language-"] {
-    padding: 1em;
-    margin: 1em 0; /* Mantener algo de margen vertical para bloques de código */
-    overflow: auto;
-    border-radius: var(--border-radius-standard);
-    background: var(--background-color-code);
-    color: var(--text-color-light);
-  }
-  
-  code[class*="language-"] {
-     font-family: var(--font-family-mono);
-     /* El color suele venir del tema de Prism */
-  }
-  
-  /* 7. Loading Spinner */
-  .loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color-overlay);
-    display: none; /* Cambiado a none por defecto, JS lo cambia a flex */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    flex-direction: column;
-    gap: var(--spacing-unit); /* 8px */
+    font-size: 0.95em; /* Ligeramente más pequeño que el texto de resultados */
+    line-height: 1.5; /* Altura de línea específica para código */
+    background: none;
+    text-shadow: none;
+    white-space: pre; /* Mantiene los espacios y saltos de línea */
+}
+[data-theme="dark"] pre[class*="language-"] code {
+    color: #ccc; /* Color base para tema oscuro */
+}
+/* Colores específicos para tokens de Prism en modo oscuro (ajustar si es necesario) */
+[data-theme="dark"] .token.comment,
+[data-theme="dark"] .token.prolog,
+[data-theme="dark"] .token.doctype,
+[data-theme="dark"] .token.cdata {
+	color: #999;
+}
+[data-theme="dark"] .token.punctuation {
+	color: #ccc;
+}
+/* ... (añadir más overrides de tokens si el tema por defecto no contrasta bien) ... */
+
+
+/* 7. Loading Spinner */
+/* El indicador de carga que aparece durante la llamada a la API */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color-overlay);
+  display: none; /* Se muestra con JS */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+  gap: var(--spacing-unit);
+  color: var(--text-color-normal);
+  font-size: 1.1em;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.spinner {
+  border: 4px solid rgba(127, 140, 141, 0.3);
+  border-top: 4px solid var(--primary-color); /* Usa el color primario del tema */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  transition: border-top-color var(--transition-speed) ease;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mensaje de error en el resultado */
+.error-message {
+    color: var(--text-color-error);
+    font-weight: bold;
+}
+
+/* 8. Botón de cambio de tema */
+/* El botón con el sol/luna */
+.theme-toggle-container {
+    position: absolute;
+    top: calc(var(--spacing-unit) * 1.5);
+    right: calc(var(--spacing-unit) * 1.5);
+    z-index: 10;
+}
+
+#themeToggle {
+    background-color: var(--background-color-button-toggle);
     color: var(--text-color-normal);
-    font-size: 1.1em;
-  }
-  
-  .spinner {
-    border: 4px solid #f3f3f3; /* Mantener gris claro base */
-    border-top: 4px solid var(--primary-color); /* Usar color primario para la parte giratoria */
+    border: 1px solid var(--border-color-medium);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    animation: spin 1s linear infinite;
+    font-size: 1.5em; /* Tamaño del emoji */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+#themeToggle:hover {
+    background-color: var(--background-color-button-toggle-hover);
+    transform: scale(1.1); /* Efecto visual al pasar el ratón */
+}
+
+
+/* 9. Media Queries para Responsividad */
+/* Ajustes para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+  body {
+    padding: var(--spacing-unit);
+    /* Opcional: Reducir tamaño base en móvil si 17px es muy grande */
+    /* --base-font-size: 16px; */
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+  .container {
+    padding: calc(var(--spacing-unit) * 2);
+    margin: var(--spacing-unit) auto;
   }
-  
-  
-  /* 8. Media Queries para Responsividad */
-  @media (max-width: 768px) {
-    body {
-      padding: var(--spacing-unit); /* 8px */
-    }
-  
-    .container {
-      padding: calc(var(--spacing-unit) * 2); /* 16px */
-      margin: var(--spacing-unit) auto; /* 8px auto */
-    }
-  
+
+  h1 {
+      font-size: 1.6em; /* Relativo a base-font-size */
+      margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .prompt-area {
+      min-height: 100px;
+  }
+
+  .button-group {
+    flex-direction: column; /* Apilar botones */
+    align-items: stretch;
+    gap: var(--spacing-unit);
+  }
+  .button-group button {
+      width: 100%; /* Ocupar ancho completo */
+  }
+
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-actions {
+      width: 100%;
+      justify-content: flex-start;
+      gap: var(--spacing-unit);
+  }
+   .result-actions button {
+       flex-grow: 1; /* Distribuir espacio */
+       text-align: center;
+   }
+
+  .result-box {
+      /* --- TAMAÑO FUENTE RESULTADOS (MÓVIL) --- */
+      font-size: calc(var(--base-font-size) - 1px); /* 16px ahora (un poco más pequeño en móvil) */
+  }
+
+  .theme-toggle-container {
+      top: var(--spacing-unit);
+      right: var(--spacing-unit);
+  }
+  #themeToggle {
+      width: 36px;
+      height: 36px;
+      font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
     h1 {
-       font-size: 1.8em; /* Reducir tamaño en móviles */
-       margin-bottom: calc(var(--spacing-unit) * 3); /* 24px */
+        font-size: 1.4em; /* Relativo a base-font-size */
     }
-  
-    .button-group {
-      flex-direction: column; /* Apilar botones principales */
-      align-items: stretch; /* Hacer que ocupen el ancho */
+    .button-group button,
+    .result-actions button {
+        padding: calc(var(--button-padding-y) * 0.8) calc(var(--button-padding-x) * 0.8);
+        font-size: calc(var(--base-font-size) - 1px); /* 16px ahora */
     }
-  
-    .result-header {
-      flex-direction: column; /* Apilar título y botones de acción */
-      align-items: flex-start; /* Alinear todo a la izquierda */
-    }
-  
-    .result-actions {
-       width: 100%; /* Hacer que los botones de acción ocupen el ancho */
-       justify-content: flex-start; /* Alinear botones a la izquierda */
-    }
-  
+     .result-actions button {
+         font-size: calc(var(--base-font-size) - 3px); /* 14px ahora */
+     }
     .result-box {
-       font-size: calc(var(--base-font-size) - 2px); /* Reducir fuente ligeramente en móvil ej 14px */
+        /* --- TAMAÑO FUENTE RESULTADOS (MÓVIL PEQUEÑO) --- */
+        font-size: calc(var(--base-font-size) - 2px); /* 15px ahora */
     }
-  }
-  
-  @media (max-width: 480px) {
-      h1 {
-          font-size: 1.5em;
-      }
-      /* Ajustes adicionales para pantallas muy pequeñas si son necesarios */
-  }
+}
+
 ```
 
 
