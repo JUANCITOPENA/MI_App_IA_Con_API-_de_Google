@@ -1275,16 +1275,14 @@ Si deseas desplegar tu aplicación en la web:
 
   ## Ahora Solo debe probar en tu pc o movil. 
 
-  # 🚀 Bienvenidos al Proyecto
-
-Los invito a entrar al **repo**, donde encontrarán la guía completa para implementar la API de Google en una interfaz personalizada. Síganla paso a paso y exploren todas sus posibilidades.
+### Los invito a entrar al **repo**, donde encontrarán la guía completa para implementar la API de Google en una interfaz personalizada. Síganla paso a paso y exploren todas sus posibilidades.
 
 💬 No duden en dejar cualquier comentario en redes sociales, ¡me encanta conocer sus opiniones y mejoras!  
 📢 Si les gustó el contenido, síganme para más guías y tutoriales sobre desarrollo y tecnología.  
 🌍 Compártanlo con su comunidad para que llegue a más personas apasionadas por la innovación.  
 ⭐ Y no olviden dejarle una **estrellita en GitHub**, eso ayuda muchísimo a seguir creando contenido útil para todos.  
 
-Nos vemos en el próximo proyecto. ¡A programar se ha dicho! 😃🔥  
+### Nos vemos en el próximo proyecto. ¡A programar se ha dicho! 😃🔥  
 
 ---
 
@@ -1295,13 +1293,10 @@ No olvides **suscribirte**, darle **like** y **compartir** este video para ayuda
 #RedesCisco #ProyectoDeRedes #CiscoPacketTracer 🌐💻📡  
 
 ---
-
 ## 📢 Sígueme en Redes Sociales  
 
 1. 🎬 **YouTube**: [@JuancitoPenaV](https://www.youtube.com/channel/UCSob-3E5z4IHtMF5B4bN-FA)  
 2. 👨‍💼 **LinkedIn**: [Juancito Peña](https://www.linkedin.com/in/juancitope%C3%B1a/)  
-3. 📰 **Blog**: [Adviser Tecnology](https://advisertecnology.com/)  
-4. 📷 **Instagram**: [@juancito.pena.v](https://www.instagram.com/juancito.pena.v/)  
-5. 📑 **Facebook**: [Juancito Peña V](https://www.facebook.com/juancito.p.v)  
-6. 🐦 **Twitter**: [@JuancitoPenaV](https://twitter.com/JuancitoPenaV)  
-7. 📰 **Blog**: [Adviser Tecnology](https://advisertecnology.com/)  
+3. 📷 **Instagram**: [@juancito.pena.v](https://www.instagram.com/juancito.pena.v/)  
+4. 📑 **Facebook**: [Juancito Peña V](https://www.facebook.com/juancito.p.v)  
+5. 🐦 **Twitter**: [@JuancitoPenaV](https://twitter.com/JuancitoPenaV)  
