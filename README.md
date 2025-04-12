@@ -484,6 +484,9 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 ## 7. Loading Spinner
 ## 8. Media Queries para Responsividad
 
+![Mi imagen](RECURSOS/Screenshot_343.png)
+
+
 ```css
 /* style.css */
 
@@ -1234,7 +1237,7 @@ Ahora estás listo para probar la aplicación en tu computadora.
 
 ![Mi imagen](RECURSOS/Screenshot_340.png)
 
-![Mi imagen](RECURSOS/Screenshot_343.png)
+
 
 
 
