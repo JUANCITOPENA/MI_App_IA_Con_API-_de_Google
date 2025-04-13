@@ -160,6 +160,23 @@ touch index.html style.css .env .gitignore api/generate.js
 ```
 
 
+Este archivo define la **estructura y el contenido** de la página web que el usuario ve e interactúa.
+
+*   **Definición Estructural:** Establece la estructura básica del documento HTML (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`).
+*   **Metadatos y Enlaces:** Configura metadatos (`<meta>`), el título de la página (`<title>`), el ícono (`<link rel="shortcut icon">`), y enlaza hojas de estilo externas (`<link rel="stylesheet" href="style.css">`) y librerías CSS (Prism).
+*   **Contenedor Principal:** Envuelve todo el contenido visible en un `<div class="container">` para facilitar el diseño y la organización.
+*   **Interfaz de Usuario (UI):**
+    *   **Botón de Tema:** Incluye un botón (`<button id="themeToggle">`) para cambiar entre modo claro y oscuro.
+    *   **Título y Avatar:** Muestra el título principal (`<h1>`) y una imagen de avatar (`<img>`).
+    *   **Área de Prompt:** Proporciona un campo de texto (`<textarea id="promptInput">`) para que el usuario ingrese su consulta.
+    *   **Botones de Acción Principal:** Agrega botones para "Enviar" (`<button id="executeBtn">`) la consulta y "Limpiar" (`<button id="clearBtn">`) la interfaz, incluyendo iconos SVG.
+    *   **Área de Resultados:** Define un encabezado (`<h3>`) y un contenedor (`<div id="resultBox">`) donde se mostrará la respuesta de la IA.
+    *   **Botones de Acción de Resultado:** Incluye botones para "Copiar" (`<button id="copyBtn">`) y "Guardar" (`<button id="saveBtn">`) la respuesta, con iconos SVG.
+*   **Indicador de Carga:** Añade un elemento visual (`<div id="loading">`) que se muestra mientras se espera la respuesta de la IA.
+*   **Inclusión de Scripts:** Carga librerías JavaScript externas necesarias (`marked.min.js`, `prism-core.min.js`, `prism-autoloader.min.js`) al final del `<body>`.
+*   **Script Principal:** Contiene el código JavaScript embebido (`<script>...</script>`) que maneja la lógica del frontend de la aplicación.
+
+
 # 📄 Código del Archivo `index.html`
 
 ![Mi imagen](RECURSOS/Screenshot_342.png)
@@ -465,6 +482,43 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 
 ## 📜 Funcionalidad ✨ (JavaScript)
 
+Este script maneja la **interactividad del usuario y la comunicación con el backend** directamente en el navegador.
+
+*   **Referencias DOM:** Obtiene referencias a los elementos HTML clave (botones, textarea, caja de resultados, indicador de carga) usando `document.getElementById`.
+*   **Manejo de Eventos:** Asigna funciones a los eventos `click` de los botones (Enviar, Limpiar, Copiar, Guardar, Tema) usando `addEventListener`.
+*   **Lógica de Tema:**
+    *   Detecta y aplica el tema guardado (`localStorage`) al cargar la página.
+    *   Alterna el atributo `data-theme` en `<html>` al hacer clic en el botón de tema.
+    *   Guarda la preferencia del tema en `localStorage`.
+    *   Actualiza el icono/texto del botón de tema.
+*   **Función `executeQuery()`:**
+    *   Obtiene el `prompt` del usuario desde el textarea.
+    *   Muestra el indicador de carga y deshabilita botones.
+    *   Realiza una petición `fetch` de tipo `POST` al endpoint del backend (`/api/generate`), enviando el `prompt` en formato JSON.
+    *   Maneja la respuesta: si es exitosa, llama a `displayResult()`; si hay error, muestra un mensaje de error en la caja de resultados.
+    *   Oculta el indicador de carga y rehabilita botones al finalizar (`finally`).
+*   **Función `displayResult()`:**
+    *   Utiliza la librería `marked.parse()` para convertir la respuesta (que puede venir en formato Markdown) a HTML.
+    *   Inserta el HTML resultante en la caja de resultados (`resultBox.innerHTML`).
+    *   Utiliza `Prism.highlightAllUnder()` para aplicar resaltado de sintaxis a los bloques de código dentro de la respuesta.
+    *   Habilita los botones de Copiar y Guardar.
+*   **Función `copyToClipboard()`:**
+    *   Obtiene el texto plano (`innerText`) de la caja de resultados.
+    *   Utiliza la API del Portapapeles (`navigator.clipboard.writeText()`) para copiar el texto.
+    *   Muestra una confirmación visual temporal en el botón "Copiar".
+    *   Maneja errores si la copia falla.
+*   **Función `saveAsTextFile()`:**
+    *   Obtiene el texto plano (`innerText`) de la caja de resultados.
+    *   Crea un `Blob` (objeto binario) con el texto.
+    *   Genera una URL temporal para el Blob (`URL.createObjectURL`).
+    *   Crea un enlace (`<a>`) invisible, le asigna la URL y un nombre de archivo (`.txt`).
+    *   Simula un clic en el enlace para iniciar la descarga.
+    *   Limpia la URL temporal (`URL.revokeObjectURL`).
+*   **Funciones de Utilidad:**
+    *   `showLoading()` / `hideLoading()`: Controlan la visibilidad del indicador de carga y el estado `disabled` de los botones.
+    *   `clearAll()`: Limpia el área de prompt y la caja de resultados, restableciendo los botones a su estado inicial.
+    *   `showNotification()`: Muestra mensajes simples al usuario (actualmente usa `alert`, podría mejorarse).
+      
 - [✅] Captura todos los elementos clave de la página HTML (botones 🔘, área de texto 📝, caja de resultados 📄) para darles funcionalidad.
 - [✅] Implementa un cambio de tema 🎨 con opción entre modo claro ☀️ y oscuro 🌙, recordando la preferencia 💾 para futuras visitas.
 - [✅] Gestiona el envío de consultas 🚀 con animación de carga ⏳ y comunicación segura con el backend 📡, que se conecta con la IA de Google Gemini 🤖.
@@ -482,7 +536,19 @@ Este archivo HTML crea una interfaz de usuario simple para interactuar con la AP
 - **showLoading() / hideLoading()**: Controla la visibilidad del indicador de carga
 - **clearAll()**: Limpia la consulta y los resultados
  
-# CSS Styles Documentation:
+# CSS Styles Documentation: CSS (`style.css`)
+
+Este archivo define la **apariencia visual y el diseño (layout)** de la aplicación web, asegurando que sea atractiva y funcional en diferentes dispositivos.
+
+*   **Variables CSS (Custom Properties):** Define una paleta de colores, tamaños de fuente, espaciados y otros valores reutilizables (`:root`). Crucial para implementar los temas claro y oscuro (`[data-theme="dark"]`).
+*   **Reset y Estilos Globales:** Aplica estilos base (`html`, `body`, `*`) para normalizar la apariencia entre navegadores y establece la fuente, tamaño de texto y altura de línea predeterminados.
+*   **Estilo del Contenedor:** Da estilo al `<div class="container">` principal (ancho máximo, márgenes, padding, fondo, sombra, bordes redondeados).
+*   **Estilo de Secciones:** Define la apariencia del área de prompt (`.prompt-section`, `.prompt-area`) y del área de resultados (`.result-container`, `.result-header`, `.result-box`).
+*   **Estilo de Botones:** Aplica estilos generales a todos los botones (`button`) y estilos específicos a los botones de acción (Enviar, Limpiar, Copiar, Guardar, Tema) con colores distintivos, iconos SVG y efectos para estados (hover, active, disabled).
+*   **Formato de Resultados:** Estiliza el texto dentro de la caja de resultados (`.result-box`), incluyendo texto normal, negritas (`<strong>`), enlaces (`<a>`), código inline (`<code>`), y bloques de código (`pre[class*="language-"]`) formateados con Prism.js. Ajusta el espaciado (`margin`, `line-height`) para mejorar la legibilidad.
+*   **Indicador de Carga:** Da estilo al spinner animado (`.loading`, `.spinner`) y al texto asociado, asegurando que se muestre centrado y sobre el contenido.
+*   **Botón de Tema:** Posiciona y estiliza el botón de cambio de tema (`.theme-toggle-container`, `#themeToggle`).
+*   **Diseño Responsivo (Media Queries):** Utiliza `@media` para ajustar el layout, tamaños de fuente y espaciados en pantallas más pequeñas (tablets, móviles), asegurando una buena experiencia de usuario en cualquier dispositivo.
 
 ## 1. Variables CSS (Custom Properties)
 ## 2. Reset y Box-Sizing Global
@@ -1062,6 +1128,22 @@ pre[class*="language-"] code {
 
 # Project Documentation
 
+## JavaScript (Backend - `api/generate.js`)
+
+Este archivo se ejecuta en el **servidor** (o entorno serverless como Vercel) y actúa como intermediario seguro entre el frontend y la API de Google Gemini.
+
+*   **Carga de Entorno:** Utiliza `require('dotenv').config()` para cargar variables de entorno (como la API Key) desde un archivo `.env` (principalmente para desarrollo local).
+*   **Dependencias:** Importa `axios` para realizar llamadas HTTP a la API externa de Google.
+*   **Manejo de CORS:** Define e implementa un middleware (`allowCors`) que añade las cabeceras HTTP necesarias (`Access-Control-Allow-Origin`, etc.) para permitir que el frontend (que se ejecuta en un origen diferente, como `localhost:3000`) pueda realizar peticiones a este endpoint de API sin ser bloqueado por las políticas de seguridad del navegador (CORS). También maneja las peticiones `OPTIONS` (preflight).
+*   **Función Handler (`handler`):** Es la función principal que Vercel ejecutará cuando se reciba una petición en la ruta `/api/generate`.
+    *   **Validación de Método:** Verifica que la petición sea de tipo `POST`.
+    *   **Extracción de Datos:** Obtiene el `prompt` enviado desde el frontend en el cuerpo (`req.body`) de la petición. Valida que el prompt exista.
+    *   **Acceso a API Key:** Obtiene de forma segura la `GOOGLE_API_KEY` desde las variables de entorno (`process.env`). Valida que la clave exista y devuelve un error genérico si falta, sin exponer detalles.
+    *   **Llamada a la API Externa:** Construye la URL del endpoint de la API de Google Gemini. Utiliza `axios.post` para enviar el `prompt` (en el formato esperado por Google) a la API de Gemini, incluyendo la `apiKey`.
+    *   **Manejo de Respuesta:** Si la llamada a Google es exitosa, envía la respuesta (`response.data`) de vuelta al frontend con un estado `200 OK`.
+    *   **Manejo de Errores:** Si ocurre un error al llamar a la API de Google (ej. red, clave inválida, error de Google), captura el error (`catch`), registra detalles en la consola del servidor (`console.error`), y envía una respuesta de error JSON al frontend con un código de estado apropiado (ej. `500`, `400`) y un mensaje de error más genérico y seguro.
+*   **Exportación:** Exporta la función `handler` envuelta en el middleware `allowCors` para que Vercel pueda utilizarla (`module.exports = allowCors(handler)`).
+  
 ![Mi imagen](RECURSOS/Screenshot_341.png)
 
 ## API Implementation (api/generate.js)
