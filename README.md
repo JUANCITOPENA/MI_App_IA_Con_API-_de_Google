@@ -185,267 +185,371 @@ Este archivo define la **estructura y el contenido** de la página web que el us
 
 ```html
 <!DOCTYPE html>
-<html lang="es" data-theme="light"> <head>
+<!-- Declara el tipo de documento como HTML5 -->
+<html lang="es" data-theme="light">
+<!-- Elemento raíz del HTML, define el idioma como español ('es') y establece un atributo 'data-theme' inicial como 'light' (para el tema claro/oscuro manejado por CSS/JS) -->
+
+<head>
+  <!-- Sección de metadatos y enlaces del documento, no visible directamente en la página -->
   <meta charset="UTF-8">
+  <!-- Especifica la codificación de caracteres como UTF-8 (soporta la mayoría de los caracteres y símbolos) -->
   <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/10306/10306029.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mi App con Gemini AI</title>
+  <!-- Enlace al icono (favicon) que aparece en la pestaña del navegador -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Configura la vista en dispositivos móviles: el ancho de la página se ajusta al ancho del dispositivo y la escala inicial es 1.0 (sin zoom inicial) -->
+  <title>Mi App con Gemini AI</title>
+  <!-- Título que aparece en la pestaña o barra de título del navegador -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css"> </head>
+  <!-- Enlace a la hoja de estilos de Prism.js (desde un CDN) para el resaltado de sintaxis de código (tema claro por defecto) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Enlace a la hoja de estilos personalizada ('style.css') que define la apariencia de la aplicación -->
+</head>
 
 <body>
+  <!-- Contenido visible de la página web -->
+
   <div class="theme-toggle-container">
+    <!-- Contenedor para el botón de cambio de tema (probablemente posicionado de forma absoluta con CSS) -->
     <button id="themeToggle" title="Cambiar modo claro/oscuro">🌞</button>
+    <!-- Botón para cambiar entre el tema claro y oscuro. El 'id' permite seleccionarlo con JS. El 'title' es el texto que aparece al pasar el ratón (tooltip). El icono (emoji) se actualizará con JS -->
   </div>
 
   <div class="container">
+    <!-- Contenedor principal que envuelve la mayoría del contenido de la aplicación, usado para centrar y limitar el ancho -->
     <div style="text-align: center;">
-      <img src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Avatar" style="width: 70px; height: 70px; border-radius: 50%; font-size: 25px;">
-  </div>
+      <!-- Contenedor para centrar la imagen del avatar. Nota: Usar estilos en línea ('style=') generalmente se desaconseja; es mejor hacerlo en el archivo CSS. -->
+      <img src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Avatar"
+        style="width: 70px; height: 70px; border-radius: 50%; font-size: 25px;">
+        <!-- Muestra una imagen de avatar. 'src' es la fuente de la imagen, 'alt' es texto alternativo para accesibilidad. Estilos en línea definen tamaño y borde redondeado. -->
+    </div>
     <h1>🛠️ Creando una Interfaz Personalizada con la API de Google: Uso, Integración y Despliegue con HTML, CSS, JS : Local y en Vercel 😃🚀</h1>
-    
+    <!-- Título principal de la aplicación -->
 
     <div class="prompt-section">
+      <!-- Sección que contiene el área para ingresar la consulta (prompt) y los botones relacionados -->
       <textarea class="prompt-area" id="promptInput" placeholder="Escribe tu consulta aquí..."></textarea>
+      <!-- Área de texto multilínea donde el usuario escribe su consulta. 'id' para JS, 'class' para CSS, 'placeholder' es el texto de ayuda que desaparece al escribir -->
       <div class="button-group">
+        <!-- Contenedor para agrupar los botones principales (Enviar, Limpiar) -->
         <button id="executeBtn" title="Enviar consulta">
+          <!-- Botón para enviar la consulta a la IA. 'id' para JS, 'title' es el tooltip -->
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+            <!-- Icono SVG (Scalable Vector Graphics) incrustado directamente en el HTML, representa un avión de papel -->
             <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
           </svg>
-          Enviar
+          Enviar <!-- Texto del botón -->
         </button>
         <button id="clearBtn" title="Limpiar consulta y resultado">
+          <!-- Botón para limpiar el área de consulta y la caja de resultados. 'id' para JS, 'title' es el tooltip -->
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+              <!-- Icono SVG incrustado, representa un borrador -->
               <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293z"/>
             </svg>
-          Limpiar
+          Limpiar <!-- Texto del botón -->
         </button>
       </div>
     </div>
 
     <div class="result-container">
+      <!-- Sección que contiene el área donde se mostrará la respuesta de la IA -->
       <div class="result-header">
+          <!-- Encabezado de la sección de resultados, contiene el título y los botones de acción -->
           <h3>Respuesta de la IA:</h3>
+          <!-- Título indicando que esta es la respuesta de la IA -->
           <div class="result-actions">
+              <!-- Contenedor para agrupar los botones de acción relacionados con el resultado (Copiar, Guardar) -->
               <button id="copyBtn" title="Copiar al portapapeles" disabled>
+                <!-- Botón para copiar la respuesta al portapapeles. 'id' para JS, 'title' es el tooltip. El atributo 'disabled' lo deshabilita inicialmente hasta que haya un resultado -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                  <!-- Icono SVG incrustado, representa un portapapeles -->
                   <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
                   <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
                 </svg>
-                Copiar
+                Copiar <!-- Texto del botón -->
               </button>
               <button id="saveBtn" title="Guardar como .txt" disabled>
+                <!-- Botón para guardar la respuesta como archivo .txt. 'id' para JS, 'title' es el tooltip. También deshabilitado inicialmente -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                  <!-- Icono SVG incrustado, representa una flecha de descarga -->
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
                 </svg>
-                Guardar
+                Guardar <!-- Texto del botón -->
               </button>
           </div>
       </div>
       <div id="resultBox" class="result-box">Esperando consulta...</div>
+      <!-- El contenedor ('div') donde se mostrará dinámicamente el texto de la respuesta de la IA. 'id' para JS, 'class' para CSS. El contenido inicial es 'Esperando consulta...' -->
     </div>
   </div>
 
   <div class="loading" id="loading" style="display: none;">
+    <!-- Elemento que muestra un indicador de carga (spinner y texto). 'id' para JS, 'class' para CSS. El estilo en línea 'display: none;' lo oculta por defecto; JS lo mostrará cuando sea necesario -->
     <div class="spinner"></div>
+    <!-- Elemento visual del spinner (probablemente animado con CSS) -->
     <span>Cargando...</span>
+    <!-- Texto que acompaña al spinner -->
   </div>
 
+  <!-- Carga de librerías JavaScript externas al final del body para asegurar que el DOM esté cargado antes de ejecutarlas -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Carga la librería Marked.js (desde un CDN) para convertir texto en formato Markdown a HTML -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <!-- Carga el núcleo de la librería Prism.js (desde un CDN) para el resaltado de sintaxis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-  <script>
-    // Referencias a elementos del DOM
-    const executeBtn = document.getElementById('executeBtn');
-    const clearBtn = document.getElementById('clearBtn');
-    const promptInput = document.getElementById('promptInput');
-    const resultBox = document.getElementById('resultBox');
-    const loadingIndicator = document.getElementById('loading');
-    const copyBtn = document.getElementById('copyBtn');
-    const saveBtn = document.getElementById('saveBtn');
-    const themeToggleBtn = document.getElementById('themeToggle'); // Botón de tema
+  <!-- Carga el plugin Autoloader de Prism.js, que permite cargar automáticamente las definiciones de lenguaje necesarias para el resaltado -->
 
-    // Estado inicial de los botones de acción
+  <script>
+    // --- Inicio del bloque de script JavaScript ---
+    // Este código maneja la lógica del lado del cliente (frontend):
+    // - Obtener referencias a los elementos HTML.
+    // - Manejar clics en botones (Enviar, Limpiar, Copiar, Guardar, Tema).
+    // - Cambiar el tema (claro/oscuro) y guardar la preferencia.
+    // - Enviar la consulta al backend (API).
+    // - Mostrar la respuesta (formateada con Marked y Prism).
+    // - Mostrar/ocultar el indicador de carga.
+    // - Copiar texto al portapapeles.
+    // - Guardar texto como archivo.
+
+    // Referencias a elementos del DOM (obtener los elementos HTML por su 'id')
+    const executeBtn = document.getElementById('executeBtn'); // Botón Enviar
+    const clearBtn = document.getElementById('clearBtn');     // Botón Limpiar
+    const promptInput = document.getElementById('promptInput'); // Área de texto para la consulta
+    const resultBox = document.getElementById('resultBox');     // Div donde se muestra el resultado
+    const loadingIndicator = document.getElementById('loading'); // Div del indicador de carga
+    const copyBtn = document.getElementById('copyBtn');       // Botón Copiar
+    const saveBtn = document.getElementById('saveBtn');       // Botón Guardar
+    const themeToggleBtn = document.getElementById('themeToggle'); // Botón de cambio de tema
+
+    // Estado inicial de los botones de acción (deshabilitados porque no hay resultado)
     copyBtn.disabled = true;
     saveBtn.disabled = true;
 
     // --- Funcionalidad del Tema ---
-    const currentTheme = localStorage.getItem('theme') || 'light'; // Obtener tema guardado o usar 'light'
-    document.documentElement.setAttribute('data-theme', currentTheme); // Aplicar tema al cargar
-    themeToggleBtn.textContent = currentTheme === 'light' ? '🌞' : '🌜'; // Establecer icono inicial
+    // Obtener el tema guardado en localStorage, o usar 'light' si no hay nada guardado
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    // Aplicar el tema al elemento <html> al cargar la página
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    // Establecer el icono inicial del botón de tema según el tema actual
+    themeToggleBtn.textContent = currentTheme === 'light' ? '🌞' : '🌜';
 
+    // Añadir un 'escuchador' de eventos al botón de tema para que reaccione al clic
     themeToggleBtn.addEventListener('click', () => {
+      // Determinar cuál será el próximo tema (si es 'light', cambiar a 'dark', y viceversa)
       let targetTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      // Aplicar el nuevo tema al elemento <html>
       document.documentElement.setAttribute('data-theme', targetTheme);
-      localStorage.setItem('theme', targetTheme); // Guardar preferencia
-      themeToggleBtn.textContent = targetTheme === 'light' ? '🌞' : '🌜'; // Actualizar icono
-      // Opcional: Si usas un tema específico de Prism para modo oscuro, cámbialo aquí
+      // Guardar la nueva preferencia de tema en localStorage
+      localStorage.setItem('theme', targetTheme);
+      // Actualizar el icono del botón de tema
+      themeToggleBtn.textContent = targetTheme === 'light' ? '🌞' : '🌜';
+      // Opcional: Si se usaran diferentes temas de Prism para claro/oscuro, se llamarían aquí
       // updatePrismTheme(targetTheme);
     });
 
-    // Opcional: Función para cambiar el CSS de Prism si es necesario
+    // Opcional: Función para cambiar el CSS de Prism si es necesario (actualmente comentada)
     // function updatePrismTheme(theme) {
     //   const prismLink = document.querySelector('link[href*="prism"]');
     //   if (prismLink) {
     //     prismLink.href = theme === 'dark'
-    //       ? 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css'
-    //       : 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+    //       ? 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css' // Tema oscuro de Prism
+    //       : 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';      // Tema claro de Prism
     //   }
     // }
-    // updatePrismTheme(currentTheme); // Llamar al cargar la página
+    // updatePrismTheme(currentTheme); // Llamar al cargar la página si se usara la función anterior
 
 
-    // --- Lógica Principal de la App (sin cambios) ---
-    executeBtn.addEventListener('click', executeQuery);
-    clearBtn.addEventListener('click', clearAll);
-    copyBtn.addEventListener('click', copyToClipboard);
-    saveBtn.addEventListener('click', saveAsTextFile);
+    // --- Lógica Principal de la App ---
+    // Añadir 'escuchadores' de eventos a los botones principales
+    executeBtn.addEventListener('click', executeQuery);   // Al hacer clic en Enviar, llamar a executeQuery
+    clearBtn.addEventListener('click', clearAll);       // Al hacer clic en Limpiar, llamar a clearAll
+    copyBtn.addEventListener('click', copyToClipboard); // Al hacer clic en Copiar, llamar a copyToClipboard
+    saveBtn.addEventListener('click', saveAsTextFile);  // Al hacer clic en Guardar, llamar a saveAsTextFile
 
+    // Función asíncrona para ejecutar la consulta a la IA
     async function executeQuery() {
-      const prompt = promptInput.value.trim();
+      const prompt = promptInput.value.trim(); // Obtener el texto del textarea y quitar espacios en blanco al inicio/fin
+      // Si el prompt está vacío, mostrar notificación y salir
       if (!prompt) {
-        // Usar un modal o notificación más elegante en lugar de alert
         showNotification('Por favor, escribe una consulta.');
         return;
       }
+      // Mostrar indicador de carga, poner texto de "Procesando..." y deshabilitar botones de acción
       showLoading();
       resultBox.textContent = 'Procesando...';
       copyBtn.disabled = true;
       saveBtn.disabled = true;
+
       try {
-        // IMPORTANTE: Asegúrate de que esta ruta '/api/generate' sea correcta
-        // para tu backend o configuración de servidor.
+        // Realizar la petición (fetch) al endpoint del backend '/api/generate'
         const response = await fetch('/api/generate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: prompt }),
+          method: 'POST', // Usar método POST
+          headers: { 'Content-Type': 'application/json' }, // Indicar que el cuerpo es JSON
+          body: JSON.stringify({ prompt: prompt }), // Enviar el prompt como un objeto JSON
         });
 
+        // Si la respuesta del servidor no fue exitosa (ej. error 4xx o 5xx)
         if (!response.ok) {
           let errorMsg = 'Error al comunicarse con el servidor.';
+          // Intentar leer el mensaje de error específico del JSON de la respuesta
           try {
             const errorData = await response.json();
             errorMsg = `Error ${response.status}: ${errorData.error || 'Detalles no disponibles.'}`;
           } catch (e) {
+            // Si no se puede leer el JSON, usar el texto de estado HTTP
             errorMsg = `Error ${response.status}: ${response.statusText}`;
           }
+          // Lanzar un error para que sea capturado por el bloque catch
           throw new Error(errorMsg);
         }
 
+        // Si la respuesta fue exitosa, convertirla de JSON a objeto JavaScript
         const data = await response.json();
 
-        // Validación más robusta de la respuesta de la API Gemini
+        // Validación robusta de la estructura de la respuesta de la API Gemini
+        // Verificar si existe la estructura esperada: candidates -> content -> parts -> text
         if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
           const contentPart = data.candidates[0].content.parts[0];
           if (contentPart.text) {
-            displayResult(contentPart.text); // Pasar solo el texto
+            // Si se encontró el texto, mostrarlo y habilitar botones de copiar/guardar
+            displayResult(contentPart.text);
             copyBtn.disabled = false;
             saveBtn.disabled = false;
           } else {
+            // Si la parte de contenido no tiene texto, mostrar advertencia y error
              console.warn('La parte de contenido no contiene texto:', contentPart);
              resultBox.innerHTML = '<span class="error-message">La respuesta no contiene texto legible.</span>';
              copyBtn.disabled = true;
              saveBtn.disabled = true;
           }
         } else {
+          // Si la estructura de la respuesta no es la esperada, mostrar advertencia y error
           console.warn('Respuesta inesperada o vacía de la API:', data);
           resultBox.innerHTML = '<span class="error-message">No se recibió una respuesta válida del modelo.</span>';
           copyBtn.disabled = true;
           saveBtn.disabled = true;
         }
       } catch (error) {
-        console.error('Error en executeQuery:', error);
-        // Mostrar error de forma más visible
+        // Capturar cualquier error ocurrido durante el fetch o el procesamiento
+        console.error('Error en executeQuery:', error); // Mostrar error detallado en la consola del navegador
+        // Mostrar mensaje de error en la caja de resultados para el usuario
         resultBox.innerHTML = `<span class="error-message">Error: ${error.message}</span>`;
-        // Permitir copiar/guardar el mensaje de error
+        // Permitir copiar/guardar el mensaje de error si se desea
         copyBtn.disabled = false;
         saveBtn.disabled = false;
       } finally {
-        hideLoading();
+        // Este bloque se ejecuta siempre, haya habido error o no
+        hideLoading(); // Ocultar el indicador de carga
       }
     }
 
+    // Función para mostrar el resultado formateado
     function displayResult(text) {
-        // Usar marked para convertir Markdown a HTML
+        // Usar marked.parse() para convertir el texto (posiblemente Markdown) a HTML
         resultBox.innerHTML = marked.parse(text);
-        // Resaltar sintaxis en los bloques de código generados
+        // Usar Prism.highlightAllUnder() para aplicar resaltado de sintaxis a los bloques de código (etiquetas <pre><code>) dentro de resultBox
         Prism.highlightAllUnder(resultBox);
     }
 
+    // Función asíncrona para copiar el resultado al portapapeles
     async function copyToClipboard() {
-      const textToCopy = resultBox.innerText; // Usar innerText para obtener solo el texto visible
+      // Obtener solo el texto visible (sin formato HTML) de la caja de resultados
+      const textToCopy = resultBox.innerText;
+      // Si no hay texto o es el mensaje inicial/procesando, mostrar notificación y salir
       if (!textToCopy || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') {
         showNotification('No hay resultado para copiar.');
         return;
        }
       try {
+          // Usar la API del Portapapeles del navegador para escribir el texto
           await navigator.clipboard.writeText(textToCopy);
-          const originalHTML = copyBtn.innerHTML; // Guardar el SVG y texto
-          copyBtn.textContent = '¡Copiado!'; // Solo texto para simplicidad temporal
-          copyBtn.disabled = true;
+          // Cambiar temporalmente el texto del botón a "¡Copiado!"
+          const originalHTML = copyBtn.innerHTML; // Guardar el contenido original (SVG + texto)
+          copyBtn.textContent = '¡Copiado!';     // Mostrar solo texto temporalmente
+          copyBtn.disabled = true;              // Deshabilitar mientras muestra "Copiado"
+          // Después de 1.5 segundos, restaurar el botón
           setTimeout(() => {
-            copyBtn.innerHTML = originalHTML; // Restaurar SVG y texto
-            copyBtn.disabled = false;
+            copyBtn.innerHTML = originalHTML; // Restaurar SVG + texto
+            copyBtn.disabled = false;        // Rehabilitar
           }, 1500);
       } catch (err) {
+          // Si la copia falla (ej. permisos denegados), mostrar error en consola y notificación
           console.error('Error al copiar:', err);
           showNotification('No se pudo copiar el texto.');
       }
     }
 
+    // Función para guardar el resultado como archivo .txt
     function saveAsTextFile() {
-        const textToSave = resultBox.innerText; // Usar innerText
+        // Obtener solo el texto visible de la caja de resultados
+        const textToSave = resultBox.innerText;
+        // Si no hay texto o es el mensaje inicial/procesando, mostrar notificación y salir
         if (!textToSave || resultBox.textContent === 'Esperando consulta...' || resultBox.textContent === 'Procesando...') {
           showNotification('No hay resultado para guardar.');
           return;
         }
         try {
+            // Crear un Blob (objeto binario grande) con el texto, especificando tipo y codificación
             const blob = new Blob([textToSave], { type: 'text/plain;charset=utf-8' });
+            // Crear una URL temporal para el Blob
             const url = URL.createObjectURL(blob);
+            // Crear un elemento de enlace (<a>) invisible
             const anchor = document.createElement('a');
-            anchor.href = url;
-            // Nombre de archivo más descriptivo
-            const timestamp = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-            anchor.download = `gemini-respuesta-${timestamp}.txt`;
-            document.body.appendChild(anchor); // Necesario para Firefox
+            anchor.href = url; // Establecer la URL del Blob en el enlace
+            // Crear un nombre de archivo descriptivo con la fecha actual
+            const timestamp = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
+            anchor.download = `gemini-respuesta-${timestamp}.txt`; // Sugerir este nombre de archivo para la descarga
+            // Añadir el enlace al cuerpo del documento (necesario para Firefox)
+            document.body.appendChild(anchor);
+            // Simular un clic en el enlace para iniciar la descarga
             anchor.click();
+            // Quitar el enlace del cuerpo del documento
             document.body.removeChild(anchor);
-            URL.revokeObjectURL(url); // Liberar memoria
+            // Liberar la URL del Blob para liberar memoria
+            URL.revokeObjectURL(url);
         } catch (error) {
+            // Si ocurre un error durante la creación/descarga del archivo
             console.error('Error al guardar archivo:', error);
             showNotification('Ocurrió un error al intentar guardar el archivo.');
         }
     }
 
+    // Función para mostrar el indicador de carga y deshabilitar botones
     function showLoading() {
-      loadingIndicator.style.display = 'flex';
-      executeBtn.disabled = true;
-      clearBtn.disabled = true; // Deshabilitar limpiar mientras carga
+      loadingIndicator.style.display = 'flex'; // Mostrar el div de carga (usa flex para centrar)
+      executeBtn.disabled = true;             // Deshabilitar botón Enviar
+      clearBtn.disabled = true;               // Deshabilitar botón Limpiar
     }
 
+    // Función para ocultar el indicador de carga y habilitar botones
     function hideLoading() {
-      loadingIndicator.style.display = 'none';
-      executeBtn.disabled = false;
-      clearBtn.disabled = false;
+      loadingIndicator.style.display = 'none'; // Ocultar el div de carga
+      executeBtn.disabled = false;            // Habilitar botón Enviar
+      clearBtn.disabled = false;              // Habilitar botón Limpiar
     }
 
+    // Función para limpiar el área de consulta y resultados
     function clearAll() {
-      promptInput.value = '';
-      resultBox.innerHTML = 'Esperando consulta...'; // Restaurar mensaje inicial
-      copyBtn.disabled = true;
-      saveBtn.disabled = true;
+      promptInput.value = ''; // Vaciar el textarea
+      resultBox.innerHTML = 'Esperando consulta...'; // Restaurar el mensaje inicial en la caja de resultados
+      copyBtn.disabled = true; // Deshabilitar botón Copiar
+      saveBtn.disabled = true; // Deshabilitar botón Guardar
     }
 
-    // Función simple para mostrar notificaciones (reemplaza alert)
+    // Función simple para mostrar notificaciones (actualmente usa 'alert')
     function showNotification(message) {
-        // Puedes implementar un sistema de notificaciones más sofisticado aquí
-        // Por ahora, usaremos un simple alert como placeholder
+        // Se podría reemplazar 'alert' por una implementación más elegante
+        // (ej. un pequeño mensaje que aparece y desaparece en la esquina)
         alert(message);
     }
 
   </script>
+  <!-- Fin del bloque de script JavaScript -->
 </body>
+<!-- Fin del contenido visible -->
+
 </html>
+<!-- Fin del documento HTML -->
 
 ```
 
@@ -569,69 +673,75 @@ Este archivo define la **apariencia visual y el diseño (layout)** de la aplicac
 ```css
 /* style.css */
 
-/* 1. Variables CSS (Custom Properties) */
-/* Aquí puedes ajustar los colores y tamaños base para toda la aplicación */
+/* ==========================================
+   1. Variables CSS (Custom Properties)
+   ========================================== */
+/* Define colores, fuentes, tamaños y espaciados base para la aplicación.
+   Facilita la gestión de temas (claro/oscuro) y la consistencia del diseño. */
 :root {
-  /* --- Tema Claro (Predeterminado) --- */
-  --primary-color: #3498db;          /* Azul principal (Enviar) */
-  --primary-color-darker: #2980b9;
-  --danger-color: #e74c3c;           /* Rojo (Limpiar, Errores) */
-  --danger-color-darker: #c0392b;
-  --info-color: #0dcaf0;             /* Azul claro (Copiar) */
-  --info-color-darker: #0aa3c2;
-  --success-color: #198754;          /* Verde (Guardar) */
-  --success-color-darker: #157347;
-  --secondary-color: #6c757d;        /* Gris (Deshabilitado Acciones) */
-  --disabled-color: #bdc3c7;         /* Gris más claro (Deshabilitado Principal) */
-  --disabled-opacity: 0.65;
+  /* --- Paleta de Colores - Tema Claro (Predeterminado) --- */
+  --primary-color: #3498db;          /* Azul principal (ej. Botón Enviar) */
+  --primary-color-darker: #2980b9;   /* Azul más oscuro para :hover */
+  --danger-color: #e74c3c;           /* Rojo (ej. Botón Limpiar, Errores) */
+  --danger-color-darker: #c0392b;    /* Rojo más oscuro para :hover */
+  --info-color: #0dcaf0;             /* Azul claro (ej. Botón Copiar) */
+  --info-color-darker: #0aa3c2;      /* Azul claro más oscuro para :hover */
+  --success-color: #198754;          /* Verde (ej. Botón Guardar) */
+  --success-color-darker: #157347;   /* Verde más oscuro para :hover */
+  --secondary-color: #6c757d;        /* Gris secundario (ej. Botones de acción deshabilitados) */
+  --disabled-color: #bdc3c7;         /* Gris claro (ej. Botones principales deshabilitados) */
+  --disabled-opacity: 0.65;          /* Opacidad para elementos deshabilitados */
 
-  --text-color-dark: #2c3e50;         /* Títulos oscuros */
-  --text-color-medium: #34495e;       /* Subtítulos */
+  /* --- Colores de Texto - Tema Claro --- */
+  --text-color-dark: #2c3e50;         /* Texto oscuro (ej. Títulos) */
+  --text-color-medium: #34495e;       /* Texto medio (ej. Subtítulos) */
   --text-color-normal: #333;          /* Texto principal */
-  --text-color-light: #ccc;           /* Texto en fondo oscuro (código) */
-  --text-color-white: #fff;           /* Texto en botones */
+  --text-color-light: #ccc;           /* Texto claro (útil sobre fondos oscuros, ej. código en tema oscuro) */
+  --text-color-white: #fff;           /* Texto blanco (ej. en botones con fondo de color) */
   --text-color-error: var(--danger-color); /* Color para mensajes de error */
-  --text-color-placeholder: #888;     /* Color para placeholder */
+  --text-color-placeholder: #888;     /* Color para texto placeholder en inputs */
 
-  --background-color-body: #f4f7f6;
-  --background-color-container: #ffffff;
-  --background-color-input: #ffffff;
-  --background-color-result: #f9f9f9;
-  --background-color-code: #f5f2f0; /* Color base claro para Prism */
-  --background-color-overlay: rgba(255, 255, 255, 0.7);
-  --background-color-button-toggle: #eee;
-  --background-color-button-toggle-hover: #ddd;
+  /* --- Colores de Fondo - Tema Claro --- */
+  --background-color-body: #f4f7f6;       /* Fondo general de la página */
+  --background-color-container: #ffffff;  /* Fondo del contenedor principal */
+  --background-color-input: #ffffff;      /* Fondo del área de texto */
+  --background-color-result: #f9f9f9;     /* Fondo de la caja de resultados */
+  --background-color-code: #f5f2f0;       /* Fondo para bloques de código (Prism) */
+  --background-color-overlay: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para el overlay de carga */
+  --background-color-button-toggle: #eee; /* Fondo del botón de cambio de tema */
+  --background-color-button-toggle-hover: #ddd; /* Fondo del botón de tema en :hover */
 
+  /* --- Bordes y Sombras - Tema Claro --- */
+  --border-color-light: #e0e0e0;       /* Borde claro (ej. caja resultado) */
+  --border-color-medium: #dcdcdc;      /* Borde medio (ej. textarea) */
+  --border-color-focus: var(--primary-color); /* Color de borde al enfocar elementos */
+  --border-radius-standard: 4px;        /* Radio de borde estándar */
+  --border-radius-large: 8px;           /* Radio de borde más grande */
+  --shadow-color: rgba(0, 0, 0, 0.1);   /* Color base para sombras */
+  --shadow-container: 0 4px 8px var(--shadow-color); /* Sombra para el contenedor */
+  --shadow-button-hover: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para botones en :hover */
 
-  --border-color-light: #e0e0e0;       /* Borde caja resultado */
-  --border-color-medium: #dcdcdc;      /* Borde textarea */
-  --border-color-focus: var(--primary-color); /* Borde al enfocar */
-  --border-radius-standard: 4px;
-  --border-radius-large: 8px;
+  /* --- Tipografía y Espaciado --- */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Fuente principal sans-serif (stack del sistema) */
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; /* Fuente monoespaciada (para código/resultados) */
+  --base-font-size: 17px;               /* Tamaño de fuente base global */
+  --line-height-normal: 1.6;            /* Altura de línea estándar */
+  --spacing-unit: 8px;                  /* Unidad base para márgenes y paddings (usar con calc) */
 
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --shadow-container: 0 4px 8px var(--shadow-color);
-  --shadow-button-hover: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* --- Dimensiones de Botones --- */
+  --button-padding-y: 10px;             /* Padding vertical botones principales */
+  --button-padding-x: 20px;             /* Padding horizontal botones principales */
+  --button-action-padding-y: 5px;       /* Padding vertical botones de acción (copiar/guardar) */
+  --button-action-padding-x: 10px;      /* Padding horizontal botones de acción */
 
-  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  /* --- AJUSTE GLOBAL: Tamaño de fuente base --- */
-  /* Afecta a la mayoría de los textos si usan 'inherit' o 'var(--base-font-size)' */
-  --base-font-size: 17px;
-  --line-height-normal: 1.6; /* Altura de línea estándar */
-  --spacing-unit: 8px; /* Unidad base para márgenes/paddings */
-
-  --button-padding-y: 10px;
-  --button-padding-x: 20px;
-  --button-action-padding-y: 5px;
-  --button-action-padding-x: 10px;
-
-  --transition-speed: 0.2s; /* Velocidad de las animaciones */
+  /* --- Transiciones --- */
+  --transition-speed: 0.2s;             /* Velocidad estándar para animaciones CSS */
 }
 
 /* --- Tema Oscuro --- */
-/* Sobrescribe las variables de :root cuando el tema es oscuro */
+/* Sobrescribe las variables de :root cuando el atributo data-theme="dark" está presente en <html> */
 [data-theme="dark"] {
+  /* Sobrescritura de Paleta de Colores */
   --primary-color: #5dade2;
   --primary-color-darker: #85c1e9;
   --danger-color: #f1948a;
@@ -643,475 +753,514 @@ Este archivo define la **apariencia visual y el diseño (layout)** de la aplicac
   --secondary-color: #99a3a4;
   --disabled-color: #7f8c8d;
 
+  /* Sobrescritura de Colores de Texto */
   --text-color-dark: #ecf0f1;
   --text-color-medium: #bdc3c7;
   --text-color-normal: #e0e0e0;
-  --text-color-light: #95a5a6;
-  --text-color-white: #1c1c1c;
+  --text-color-light: #95a5a6; /* Usado en tema claro para código, aquí podría ser menos relevante */
+  --text-color-white: #1c1c1c; /* Texto oscuro sobre botones claros en tema oscuro */
   --text-color-error: var(--danger-color);
   --text-color-placeholder: #777;
 
+  /* Sobrescritura de Colores de Fondo */
   --background-color-body: #2c3e50;
   --background-color-container: #34495e;
   --background-color-input: #465a70;
   --background-color-result: #405164;
-  --background-color-code: #2d2d2d;
-  --background-color-overlay: rgba(0, 0, 0, 0.6);
+  --background-color-code: #2d2d2d; /* Fondo oscuro para bloques de código */
+  --background-color-overlay: rgba(0, 0, 0, 0.6); /* Overlay de carga oscuro */
   --background-color-button-toggle: #444;
   --background-color-button-toggle-hover: #555;
 
+  /* Sobrescritura de Bordes y Sombras */
   --border-color-light: #4a637d;
   --border-color-medium: #56708a;
   --border-color-focus: var(--primary-color);
-
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.3); /* Sombra más pronunciada en tema oscuro */
   --shadow-container: 0 4px 12px var(--shadow-color);
 }
 
-/* 2. Reset y Box-Sizing Global */
-/* Configuraciones generales para asegurar consistencia */
+/* ==========================================
+   2. Reset Básico y Estilos Globales
+   ========================================== */
 html {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  box-sizing: border-box; /* Modelo de caja más intuitivo */
+  scroll-behavior: smooth; /* Desplazamiento suave para anclas */
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+
+*, *::before, *::after {
+  box-sizing: inherit; /* Hereda box-sizing de html */
+  margin: 0;           /* Elimina márgenes por defecto */
+  padding: 0;          /* Elimina paddings por defecto */
 }
 
 body {
-  font-family: var(--font-family-sans);
-  font-size: var(--base-font-size); /* Tamaño base aplicado al body */
-  margin: 0;
-  padding: calc(var(--spacing-unit) * 2.5);
-  background-color: var(--background-color-body);
-  color: var(--text-color-normal);
+  font-family: var(--font-family-sans);   /* Fuente base */
+  font-size: var(--base-font-size);       /* Tamaño de fuente base */
   line-height: var(--line-height-normal); /* Altura de línea base */
+  background-color: var(--background-color-body); /* Color de fondo (depende del tema) */
+  color: var(--text-color-normal);        /* Color de texto (depende del tema) */
+  padding: calc(var(--spacing-unit) * 2.5); /* Padding alrededor del contenido */
+  /* Transiciones suaves para cambios de tema */
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* 3. Estilos del Contenedor Principal */
-/* El contenedor que envuelve toda la aplicación */
+/* ==========================================
+   3. Contenedor Principal y Título
+   ========================================== */
 .container {
-  max-width: 1200px;
-  margin: calc(var(--spacing-unit) * 2.5) auto;
-  padding: calc(var(--spacing-unit) * 3);
-  background-color: var(--background-color-container);
-  border-radius: var(--border-radius-large);
-  box-shadow: var(--shadow-container);
+  max-width: 1200px;  /* Ancho máximo del contenido */
+  margin: calc(var(--spacing-unit) * 2.5) auto; /* Centrado horizontal con margen superior/inferior */
+  padding: calc(var(--spacing-unit) * 3);      /* Espaciado interno */
+  background-color: var(--background-color-container); /* Fondo (depende del tema) */
+  border-radius: var(--border-radius-large);        /* Bordes redondeados */
+  box-shadow: var(--shadow-container);              /* Sombra (depende del tema) */
+  display: flex;            /* Habilita Flexbox */
+  flex-direction: column;   /* Organiza los hijos en columna */
+  /* Transiciones suaves para cambios de tema */
   transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  display: flex;
-  flex-direction: column;
 }
 
 h1 {
-  text-align: center;
-  color: var(--text-color-dark);
-  margin-top: 0;
-  margin-bottom: calc(var(--spacing-unit) * 4);
-  transition: color var(--transition-speed) ease;
-  font-weight: 600;
+  text-align: center;                       /* Título centrado */
+  color: var(--text-color-dark);            /* Color (depende del tema) */
+  margin-bottom: calc(var(--spacing-unit) * 4); /* Espacio debajo del título */
+  font-weight: 600;                         /* Peso de fuente semi-bold */
+  transition: color var(--transition-speed) ease; /* Transición suave de color */
 }
 
-/* 4. Sección del Prompt */
-/* Estilos para el área de texto donde el usuario escribe */
+/* ==========================================
+   4. Sección del Prompt (Entrada de Usuario)
+   ========================================== */
 .prompt-section {
-  margin-bottom: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3); /* Espacio debajo de esta sección */
 }
 
 .prompt-area {
-  width: 100%;
-  padding: calc(var(--spacing-unit) * 1.5);
-  border: 1px solid var(--border-color-medium);
-  border-radius: var(--border-radius-standard);
-  /* --- TAMAÑO FUENTE PROMPT --- */
-  /* Hereda el tamaño de fuente del body (var(--base-font-size)) */
-  /* Puedes cambiarlo aquí si quieres un tamaño diferente: font-size: 18px; */
-  font-size: 20px;
-  text-align: justify;
-  min-height: 100px;
-  resize: vertical;
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
-  font-family: inherit; /* Usa la misma fuente sans-serif del body */
-  background-color: var(--background-color-input);
-  color: var(--text-color-normal);
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  width: 100%;                        /* Ocupa todo el ancho disponible */
+  min-height: 100px;                  /* Altura mínima */
+  padding: calc(var(--spacing-unit) * 1.5); /* Espaciado interno */
+  border: 1px solid var(--border-color-medium); /* Borde (depende del tema) */
+  border-radius: var(--border-radius-standard); /* Bordes redondeados */
+  font-family: inherit; /* Hereda la fuente sans-serif del body */
+  font-size: 20px;      /* Tamaño de fuente específico para la entrada */
+  text-align: justify;  /* Texto justificado */
+  resize: vertical;     /* Permite redimensionar verticalmente */
+  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Espacio debajo del textarea */
+  background-color: var(--background-color-input); /* Fondo (depende del tema) */
+  color: var(--text-color-normal);            /* Color de texto (depende del tema) */
+  /* Transiciones suaves */
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease;
 }
+
 .prompt-area::placeholder {
-    color: var(--text-color-placeholder);
-    opacity: 0.8;
+  color: var(--text-color-placeholder); /* Color del texto placeholder */
+  opacity: 0.8;                         /* Ligera transparencia */
 }
+
 .prompt-area:focus {
-    outline: none;
-    border-color: var(--border-color-focus);
-    box-shadow: 0 0 0 2px rgba(var(--primary-color), 0.2);
+  outline: none; /* Quita el contorno por defecto del navegador */
+  border-color: var(--border-color-focus); /* Cambia color de borde al enfocar */
+  /* Añade una sombra sutil al enfocar */
+  box-shadow: 0 0 0 3px rgba(var(--primary-color), 0.15); /* Ajusta el color y opacidad según necesites */
 }
 
+/* ==========================================
+   5. Botones (Generales y Específicos)
+   ========================================== */
 
-/* 5. Grupos de Botones */
-/* Estilos para los botones principales (Enviar, Limpiar) y de acción (Copiar, Guardar) */
+/* Contenedores para grupos de botones */
 .button-group,
 .result-actions {
-  display: flex;
-  gap: calc(var(--spacing-unit) * 1.5);
-  flex-wrap: wrap;
+  display: flex; /* Usa Flexbox para alinear botones */
+  gap: calc(var(--spacing-unit) * 1.5); /* Espacio entre botones */
+  flex-wrap: wrap; /* Permite que los botones pasen a la siguiente línea si no caben */
 }
 
 /* Estilo base para TODOS los botones */
 button {
-  border: none;
-  border-radius: var(--border-radius-standard);
-  cursor: pointer;
-  transition: background-color var(--transition-speed) ease, opacity var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--spacing-unit) * 0.75);
-  /* --- TAMAÑO FUENTE BOTONES --- */
-  /* Hereda el tamaño de fuente del body (var(--base-font-size)) */
-  /* Puedes ajustarlo aquí: font-size: 16px; */
-  font-size: inherit;
-  color: var(--text-color-white);
-  line-height: 1.2;
-  font-weight: 500;
-  text-align: center;
-}
-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-button-hover);
-}
-button:active:not(:disabled) {
-    transform: translateY(0px);
-    box-shadow: none;
+  display: inline-flex; /* Permite alinear icono y texto fácilmente */
+  align-items: center;    /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  gap: calc(var(--spacing-unit) * 0.75); /* Espacio entre icono y texto */
+  padding: var(--button-padding-y) var(--button-padding-x); /* Padding base (puede ser sobrescrito) */
+  border: none; /* Sin borde por defecto */
+  border-radius: var(--border-radius-standard); /* Bordes redondeados */
+  font-family: inherit; /* Hereda fuente del body */
+  font-size: inherit;   /* Hereda tamaño de fuente base (puede ser sobrescrito) */
+  font-weight: 500;     /* Peso de fuente medio */
+  color: var(--text-color-white); /* Color de texto (generalmente blanco o negro, ver tema oscuro) */
+  line-height: 1.2;     /* Altura de línea ajustada para botones */
+  text-align: center;   /* Alineación de texto */
+  cursor: pointer;      /* Cursor de mano */
+  /* Transiciones suaves para efectos visuales */
+  transition: background-color var(--transition-speed) ease,
+              opacity var(--transition-speed) ease,
+              transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
 }
 
-/* Estilo específico botones principales (Enviar, Limpiar) */
-.button-group button {
-  padding: var(--button-padding-y) var(--button-padding-x);
-  /* Hereda font-size */
+/* Efectos Hover y Active (solo si no está deshabilitado) */
+button:not(:disabled):hover {
+  transform: translateY(-1px); /* Ligero desplazamiento hacia arriba */
+  box-shadow: var(--shadow-button-hover); /* Añade sombra */
 }
 
-#executeBtn { background-color: var(--primary-color); }
-#executeBtn:hover:not(:disabled) { background-color: var(--primary-color-darker); }
-
-#clearBtn { background-color: var(--danger-color); }
-#clearBtn:hover:not(:disabled) { background-color: var(--danger-color-darker); }
-
-/* Deshabilitado para botones principales */
-.button-group button:disabled {
-    background-color: var(--disabled-color);
-    cursor: not-allowed;
-    opacity: var(--disabled-opacity);
-    transform: none;
-    box-shadow: none;
-}
-
-/* Estilo específico botones de acción (Copiar, Guardar) */
-.result-actions button {
-  padding: var(--button-action-padding-y) var(--button-action-padding-x);
-  /* --- TAMAÑO FUENTE BOTONES ACCIÓN --- */
-  /* Un poco más pequeño que los botones principales */
-  font-size: calc(var(--base-font-size) - 2px); /* 15px ahora */
-}
-
-#copyBtn { background-color: var(--info-color); font-size: 20px; }
-#copyBtn:hover:not(:disabled) { background-color: var(--info-color-darker); }
-
-#saveBtn { background-color: var(--success-color); font-size: 20px;}
-#saveBtn:hover:not(:disabled) { background-color: var(--success-color-darker); }
-
-/* Deshabilitado para botones de acción */
-.result-actions button:disabled {
-  background-color: var(--secondary-color);
-  cursor: not-allowed;
-  opacity: var(--disabled-opacity);
-  transform: none;
-  box-shadow: none;
+button:not(:disabled):active {
+  transform: translateY(0px); /* Vuelve a la posición original al hacer clic */
+  box-shadow: none; /* Quita la sombra al hacer clic */
 }
 
 /* Iconos SVG dentro de botones */
 button svg {
   width: 1em; /* Tamaño relativo al font-size del botón */
   height: 1em;
-  vertical-align: middle;
-  fill: currentColor;
+  vertical-align: middle; /* Alineación vertical (aunque flexbox ya ayuda) */
+  fill: currentColor; /* El color del icono será el mismo que el color de texto del botón */
+}
+
+/* --- Botones Principales (Enviar, Limpiar) --- */
+/* Ya heredan el padding y font-size base de 'button' */
+
+#executeBtn { background-color: var(--primary-color); }
+#executeBtn:not(:disabled):hover { background-color: var(--primary-color-darker); }
+
+#clearBtn { background-color: var(--danger-color); }
+#clearBtn:not(:disabled):hover { background-color: var(--danger-color-darker); }
+
+/* Estilo para botones principales deshabilitados */
+.button-group button:disabled {
+  background-color: var(--disabled-color); /* Color de fondo gris */
+  cursor: not-allowed; /* Cursor de no permitido */
+  opacity: var(--disabled-opacity); /* Opacidad reducida */
+  transform: none; /* Sin efecto de desplazamiento */
+  box-shadow: none; /* Sin sombra */
+}
+
+/* --- Botones de Acción (Copiar, Guardar) --- */
+.result-actions button {
+  /* Padding más pequeño para botones de acción */
+  padding: var(--button-action-padding-y) var(--button-action-padding-x);
+  /* Tamaño de fuente ligeramente más pequeño que el base */
+  font-size: calc(var(--base-font-size) - 2px); /* ~15px */
+}
+
+/* OPTIMIZACIÓN: Se eliminó font-size: 20px de #copyBtn y #saveBtn.
+   Ahora heredan el tamaño de .result-actions button (15px base)
+   y se ajustan correctamente en media queries. */
+#copyBtn { background-color: var(--info-color); }
+#copyBtn:not(:disabled):hover { background-color: var(--info-color-darker); }
+
+#saveBtn { background-color: var(--success-color); }
+#saveBtn:not(:disabled):hover { background-color: var(--success-color-darker); }
+
+/* Estilo para botones de acción deshabilitados */
+.result-actions button:disabled {
+  background-color: var(--secondary-color); /* Gris secundario */
+  cursor: not-allowed;
+  opacity: var(--disabled-opacity);
+  transform: none;
+  box-shadow: none;
 }
 
 
-/* 6. Sección de Resultados */
-/* Estilos para el contenedor de la respuesta de la IA */
+/* ==========================================
+   6. Sección de Resultados
+   ========================================== */
 .result-container {
-    margin-top: calc(var(--spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 4); /* Espacio encima de la sección de resultados */
 }
 
 .result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-unit);
-  flex-wrap: wrap;
-  gap: var(--spacing-unit);
+  display: flex;                  /* Usa Flexbox */
+  justify-content: space-between; /* Separa título y botones */
+  align-items: center;            /* Centra verticalmente */
+  margin-bottom: var(--spacing-unit); /* Espacio debajo del encabezado */
+  flex-wrap: wrap;                /* Permite envolver si no cabe */
+  gap: var(--spacing-unit);       /* Espacio entre elementos si envuelve */
 }
 
 .result-header h3 {
-  margin: 0;
-  color: var(--text-color-medium);
-  transition: color var(--transition-speed) ease;
-  flex-grow: 1;
-  font-size: calc(var(--base-font-size) + 2px); /* 19px ahora */
-  font-weight: 600;
+  /* margin: 0; ya aplicado en reset */
+  color: var(--text-color-medium); /* Color de subtítulo (depende del tema) */
+  flex-grow: 1;                   /* Permite que ocupe el espacio sobrante */
+  font-size: calc(var(--base-font-size) + 2px); /* Ligeramente más grande que el base (~19px) */
+  font-weight: 600;               /* Semi-bold */
+  transition: color var(--transition-speed) ease; /* Transición suave */
 }
 
 .result-box {
-  padding: calc(var(--spacing-unit) * 2);
-  border: 1px solid var(--border-color-light);
-  border-radius: var(--border-radius-standard);
-  background-color: var(--background-color-result);
-  min-height: 150px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  font-family: var(--font-family-mono); /* Fuente monoespaciada para resultados */
-  /* --- AJUSTE: TAMAÑO FUENTE RESULTADOS --- */
-  /* Aumentado para que coincida con el tamaño base */
-  font-size: var(--base-font-size); /* 17px ahora */
-  overflow-x: auto;
-  color: var(--text-color-normal);
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  padding: calc(var(--spacing-unit) * 2); /* Espaciado interno */
+  border: 1px solid var(--border-color-light); /* Borde claro (depende del tema) */
+  border-radius: var(--border-radius-standard); /* Bordes redondeados */
+  background-color: var(--background-color-result); /* Fondo (depende del tema) */
+  min-height: 150px;                  /* Altura mínima */
+  font-family: var(--font-family-mono); /* Fuente monoespaciada para legibilidad */
+  font-size: var(--base-font-size);    /* Mismo tamaño que el texto base (~17px) */
+  color: var(--text-color-normal);     /* Color de texto (depende del tema) */
+  white-space: pre-wrap;     /* Conserva espacios/saltos y permite envolver líneas */
+  word-wrap: break-word;     /* Fuerza el corte de palabras largas */
+  overflow-x: auto;          /* Añade scroll horizontal si el contenido (ej. código) es muy ancho */
+  /* Transiciones suaves */
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease;
 }
 
-/* --- AJUSTE: ESPACIADO ENTRE ELEMENTOS EN RESULTADOS --- */
-/* Controla el espacio vertical (altura) entre párrafos, listas, etc. */
+/* --- Espaciado y Estilos dentro de .result-box --- */
+/* Controla el espacio vertical entre párrafos, listas, bloques de código, etc. */
 .result-box p,
+.result-box ul, /* Añadido ul/ol para consistencia */
+.result-box ol,
 .result-box li,
 .result-box blockquote,
-.result-box pre /* Incluir <pre> para espaciado consistente */ {
-    line-height: var(--line-height-normal); /* Altura de línea estándar (1.6) */
-    /* --- AJUSTE: Reducir márgenes verticales --- */
-    /* Cambia estos valores (ej. 0.2em, 0.4em) para más/menos espacio */
-    margin-top: 0.3em;    /* Espacio reducido arriba */
-    margin-bottom: 0.3em; /* Espacio reducido abajo */
-}
-/* Eliminar margen extra al inicio y final del contenedor de resultados */
-.result-box > *:first-child {
-    margin-top: 0;
-}
-.result-box > *:last-child {
-    margin-bottom: 0;
+.result-box pre {
+  line-height: var(--line-height-normal); /* Altura de línea estándar */
+  margin-top: 0.5em;    /* Espacio vertical entre elementos (ajustar si es necesario) */
+  margin-bottom: 0.5em;
 }
 
-/* Estilos para elementos específicos dentro de los resultados */
+/* Elimina margen extra al inicio y final del contenedor */
+.result-box > *:first-child { margin-top: 0; }
+.result-box > *:last-child { margin-bottom: 0; }
+
+/* Estilos para elementos específicos */
 .result-box strong {
-    color: var(--text-color-dark);
-    transition: color var(--transition-speed) ease;
-    font-weight: 600;
+  color: var(--text-color-dark); /* Texto en negrita más oscuro */
+  font-weight: 600;
+  transition: color var(--transition-speed) ease;
 }
+
 .result-box a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
+  color: var(--primary-color); /* Enlaces con color primario */
+  text-decoration: none; /* Sin subrayado por defecto */
+  transition: color var(--transition-speed) ease;
 }
 .result-box a:hover {
-    text-decoration: underline;
-    color: var(--primary-color-darker);
-}
-/* Código inline (ej: `variable`) */
-.result-box code:not([class*="language-"]) {
-    background-color: rgba(127, 140, 141, 0.15);
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: 90%; /* Un poco más pequeño que el texto circundante */
-}
-[data-theme="dark"] .result-box code:not([class*="language-"]) {
-    background-color: rgba(44, 62, 80, 0.5);
+  text-decoration: underline; /* Subrayado al pasar el ratón */
+  color: var(--primary-color-darker); /* Color más oscuro */
 }
 
-/* Estilos para bloques de código resaltados por PrismJS */
-/* El margen vertical se controla ahora por la regla general de arriba */
-pre[class*="language-"] {
-  padding: 1em;
-  overflow: auto;
-  border-radius: var(--border-radius-standard);
-  background: var(--background-color-code);
-  border: 1px solid var(--border-color-light);
+/* Código inline (ej: `variable`) */
+.result-box code:not([class*="language-"]) {
+  background-color: rgba(127, 140, 141, 0.15); /* Fondo sutil grisáceo */
+  padding: 0.2em 0.4em;     /* Padding pequeño */
+  border-radius: 3px;       /* Bordes ligeramente redondeados */
+  font-size: 90%;           /* Un poco más pequeño que el texto circundante */
+  vertical-align: baseline; /* Mejor alineación con el texto */
+}
+[data-theme="dark"] .result-box code:not([class*="language-"]) {
+  background-color: rgba(44, 62, 80, 0.5); /* Fondo más oscuro en tema dark */
+}
+
+/* Bloques de código resaltados por PrismJS (<pre><code class="language-...">) */
+.result-box pre[class*="language-"] {
+  /* margin-top/bottom heredado de la regla general de arriba */
+  padding: 1em;           /* Espaciado interno generoso */
+  overflow: auto;         /* Scroll si el código es muy ancho/largo */
+  border-radius: var(--border-radius-standard); /* Bordes redondeados */
+  background: var(--background-color-code); /* Fondo (depende del tema) */
+  border: 1px solid var(--border-color-light); /* Borde sutil (depende del tema) */
   transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
+
 /* Texto dentro de los bloques de código */
-pre[class*="language-"] code {
-    color: #333; /* Color base para tema claro */
-    font-family: var(--font-family-mono);
-    font-size: 0.95em; /* Ligeramente más pequeño que el texto de resultados */
-    line-height: 1.5; /* Altura de línea específica para código */
-    background: none;
-    text-shadow: none;
-    white-space: pre; /* Mantiene los espacios y saltos de línea */
+.result-box pre[class*="language-"] code {
+  display: block; /* Asegura que ocupe el contenedor <pre> */
+  font-family: var(--font-family-mono); /* Fuente monoespaciada */
+  font-size: 0.95em;      /* Ligeramente más pequeño que el texto de resultados */
+  line-height: 1.5;       /* Altura de línea específica para código */
+  color: var(--text-color-normal); /* Color base (depende del tema) */
+  background: none;       /* Sin fondo propio (usa el de <pre>) */
+  text-shadow: none;      /* Sin sombra de texto */
+  white-space: pre;       /* Mantiene espacios y saltos de línea */
+  /* Resetea estilos de código inline por si acaso */
+  padding: 0;
+  border-radius: 0;
 }
-[data-theme="dark"] pre[class*="language-"] code {
-    color: #ccc; /* Color base para tema oscuro */
-}
-/* Colores específicos para tokens de Prism en modo oscuro (ajustar si es necesario) */
+
+/* Ajustes de color específicos para Prism en tema oscuro (si el tema por defecto no contrasta bien) */
 [data-theme="dark"] .token.comment,
 [data-theme="dark"] .token.prolog,
 [data-theme="dark"] .token.doctype,
 [data-theme="dark"] .token.cdata {
-	color: #999;
+	color: #999; /* Comentarios en gris */
 }
 [data-theme="dark"] .token.punctuation {
-	color: #ccc;
+	color: #ccc; /* Puntuación en gris claro */
 }
-/* ... (añadir más overrides de tokens si el tema por defecto no contrasta bien) ... */
+/* ... (añadir más overrides de tokens si es necesario) ... */
+
+/* Mensaje de error dentro de .result-box */
+.error-message {
+  color: var(--text-color-error); /* Usa el color de error definido */
+  font-weight: bold;             /* Texto en negrita */
+}
 
 
-/* 7. Loading Spinner */
-/* El indicador de carga que aparece durante la llamada a la API */
+/* ==========================================
+   7. Indicador de Carga (Spinner)
+   ========================================== */
 .loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--background-color-overlay);
-  display: none; /* Se muestra con JS */
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  flex-direction: column;
-  gap: var(--spacing-unit);
-  color: var(--text-color-normal);
+  position: fixed; /* Fijo en la pantalla */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: var(--background-color-overlay); /* Fondo semitransparente */
+  display: none; /* Oculto por defecto (se muestra con JS) */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center;     /* Centrado vertical */
+  z-index: 1000;           /* Por encima de otros elementos */
+  flex-direction: column;  /* Apila spinner y texto */
+  gap: var(--spacing-unit); /* Espacio entre spinner y texto */
+  color: var(--text-color-normal); /* Color del texto "Cargando..." */
   font-size: 1.1em;
+  /* Transiciones suaves para el fondo y color al cambiar tema mientras está visible */
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .spinner {
-  border: 4px solid rgba(127, 140, 141, 0.3);
-  border-top: 4px solid var(--primary-color); /* Usa el color primario del tema */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  transition: border-top-color var(--transition-speed) ease;
+  width: 40px; height: 40px;
+  border: 4px solid rgba(127, 140, 141, 0.3); /* Borde grisáceo semi-transparente */
+  border-top-color: var(--primary-color); /* Color primario para la parte giratoria */
+  border-radius: 50%; /* Círculo perfecto */
+  animation: spin 1s linear infinite; /* Animación de rotación */
+  transition: border-top-color var(--transition-speed) ease; /* Transición suave de color */
 }
 
+/* Animación del spinner */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Mensaje de error en el resultado */
-.error-message {
-    color: var(--text-color-error);
-    font-weight: bold;
-}
 
-/* 8. Botón de cambio de tema */
-/* El botón con el sol/luna */
+/* ==========================================
+   8. Botón de Cambio de Tema
+   ========================================== */
 .theme-toggle-container {
-    position: absolute;
-    top: calc(var(--spacing-unit) * 1.5);
-    right: calc(var(--spacing-unit) * 1.5);
-    z-index: 10;
+  position: absolute; /* Posicionamiento absoluto respecto al body o contenedor relativo más cercano */
+  top: calc(var(--spacing-unit) * 1.5); /* Espacio desde arriba */
+  right: calc(var(--spacing-unit) * 1.5); /* Espacio desde la derecha */
+  z-index: 10; /* Asegura que esté sobre el contenido general */
 }
 
 #themeToggle {
-    background-color: var(--background-color-button-toggle);
-    color: var(--text-color-normal);
-    border: 1px solid var(--border-color-medium);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5em; /* Tamaño del emoji */
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  background-color: var(--background-color-button-toggle); /* Fondo (depende del tema) */
+  color: var(--text-color-normal); /* Color del icono (depende del tema) */
+  border: 1px solid var(--border-color-medium); /* Borde sutil (depende del tema) */
+  border-radius: 50%; /* Botón circular */
+  width: 40px; height: 40px; /* Tamaño fijo */
+  font-size: 1.5em; /* Tamaño del icono (emoji) */
+  padding: 0; /* Sin padding interno extra */
+  display: flex; /* Para centrar el icono */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sombra sutil */
+  /* Transiciones suaves para cambios de tema y hover */
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
 }
 
 #themeToggle:hover {
-    background-color: var(--background-color-button-toggle-hover);
-    transform: scale(1.1); /* Efecto visual al pasar el ratón */
+  background-color: var(--background-color-button-toggle-hover); /* Cambio de fondo en hover */
+  transform: scale(1.1); /* Ligero aumento de tamaño en hover */
 }
 
 
-/* 9. Media Queries para Responsividad */
-/* Ajustes para diferentes tamaños de pantalla */
+/* ==========================================
+   9. Media Queries para Responsividad
+   ========================================== */
+
+/* --- Estilos para Tablets y pantallas medianas (<= 768px) --- */
 @media (max-width: 768px) {
   body {
-    padding: var(--spacing-unit);
+    padding: var(--spacing-unit); /* Reduce el padding general */
     /* Opcional: Reducir tamaño base en móvil si 17px es muy grande */
     /* --base-font-size: 16px; */
   }
 
   .container {
-    padding: calc(var(--spacing-unit) * 2);
-    margin: var(--spacing-unit) auto;
+    padding: calc(var(--spacing-unit) * 2); /* Reduce padding del contenedor */
+    margin: var(--spacing-unit) auto; /* Reduce margen vertical */
   }
 
   h1 {
-      font-size: 1.6em; /* Relativo a base-font-size */
-      margin-bottom: calc(var(--spacing-unit) * 3);
+    font-size: 1.6em; /* Tamaño de fuente relativo al base */
+    margin-bottom: calc(var(--spacing-unit) * 3); /* Reduce espacio inferior */
   }
 
-  .prompt-area {
-      min-height: 100px;
-  }
+  /* No es necesario ajustar .prompt-area min-height aquí a menos que sea un problema */
 
+  /* Botones principales se apilan */
   .button-group {
-    flex-direction: column; /* Apilar botones */
-    align-items: stretch;
-    gap: var(--spacing-unit);
+    flex-direction: column; /* Apila los botones */
+    align-items: stretch;   /* Estira los botones al ancho completo */
+    gap: var(--spacing-unit); /* Espacio entre botones apilados */
   }
-  .button-group button {
-      width: 100%; /* Ocupar ancho completo */
-  }
+  /* No es necesario .button-group button { width: 100%; } porque align-items: stretch lo hace */
 
+  /* Encabezado de resultados se apila */
   .result-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column;     /* Apila título y botones de acción */
+    align-items: flex-start;  /* Alinea elementos a la izquierda */
   }
 
+  /* Botones de acción ocupan el ancho y se alinean */
   .result-actions {
-      width: 100%;
-      justify-content: flex-start;
-      gap: var(--spacing-unit);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    justify-content: flex-start; /* Alinea botones al inicio */
+    gap: var(--spacing-unit); /* Espacio entre botones */
   }
-   .result-actions button {
-       flex-grow: 1; /* Distribuir espacio */
-       text-align: center;
-   }
+  .result-actions button {
+    flex-grow: 1; /* Permite que los botones crezcan para llenar el espacio */
+    text-align: center; /* Centra el texto (aunque ya lo hace justify-content en button base) */
+  }
 
+  /* Reduce tamaño de fuente en la caja de resultados */
   .result-box {
-      /* --- TAMAÑO FUENTE RESULTADOS (MÓVIL) --- */
-      font-size: calc(var(--base-font-size) - 1px); /* 16px ahora (un poco más pequeño en móvil) */
+    font-size: calc(var(--base-font-size) - 1px); /* ~16px */
   }
 
+  /* Acerca el botón de tema a la esquina */
   .theme-toggle-container {
-      top: var(--spacing-unit);
-      right: var(--spacing-unit);
+    top: var(--spacing-unit);
+    right: var(--spacing-unit);
   }
+  /* Hace el botón de tema ligeramente más pequeño */
   #themeToggle {
-      width: 36px;
-      height: 36px;
-      font-size: 1.3em;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3em;
   }
 }
 
+/* --- Estilos para Móviles pequeños (<= 480px) --- */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.4em; /* Relativo a base-font-size */
-    }
-    .button-group button,
-    .result-actions button {
-        padding: calc(var(--button-padding-y) * 0.8) calc(var(--button-padding-x) * 0.8);
-        font-size: calc(var(--base-font-size) - 1px); /* 16px ahora */
-    }
-     .result-actions button {
-         font-size: calc(var(--base-font-size) - 3px); /* 14px ahora */
-     }
-    .result-box {
-        /* --- TAMAÑO FUENTE RESULTADOS (MÓVIL PEQUEÑO) --- */
-        font-size: calc(var(--base-font-size) - 2px); /* 15px ahora */
-    }
+  h1 {
+    font-size: 1.4em; /* Reduce más el tamaño del título */
+  }
+
+  /* Reduce el padding y tamaño de fuente de los botones */
+  .button-group button,
+  .result-actions button {
+    padding: calc(var(--button-padding-y) * 0.8) calc(var(--button-padding-x) * 0.8); /* Reduce padding */
+    font-size: calc(var(--base-font-size) - 1px); /* Reduce tamaño fuente (~16px) */
+  }
+  /* Reduce aún más el tamaño de los botones de acción */
+  .result-actions button {
+    font-size: calc(var(--base-font-size) - 3px); /* Reduce más (~14px) */
+  }
+
+  /* Reduce más el tamaño de fuente en la caja de resultados */
+  .result-box {
+    font-size: calc(var(--base-font-size) - 2px); /* Reduce más (~15px) */
+  }
 }
+
 
 ```
 ## 🎨 Funcionalidades de la App ✨ (Codigo Estilo Style.CSS):
